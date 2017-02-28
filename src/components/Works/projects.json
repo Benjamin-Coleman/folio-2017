@@ -1,0 +1,148 @@
+{
+    "projects":
+    [
+        {
+            "id": "00",
+            "symbol": "Inside Discovery",
+            "brand": "PITCHFORK & SPOTIFY",
+            "role": "Creative Developer & UX Designer",
+            "season": "SS 016",
+			"video": "/assets/videos/loop.mp4",
+            "offsetLeft": 2,
+            "offsetRight": 2,
+            "col": 8,
+            "description":"We worked together with Pitchfork and Spotify to create Inside Discovery. A editorial interactive website that let user have a look into fresh Discover Weekly playlists from Pitchfork editors and their favorite artists.",
+            "agency": "Stink Studios",
+            "dev": "Css animation, Homemade framework",
+            "awards": "FWA, awwwards",
+            "link":{
+                "label": "Visit Website ¬",
+                "url": "https://insidediscovery.pitchfork.com/"
+            }
+        },
+		{
+            "id": "01",
+            "symbol": "B",
+            "brand": "ALEXANDRE ROCHET",
+            "name": "Portfolio",
+			"video": "/assets/videos/loop.mp4",
+            "offsetLeft": 0,
+            "offsetRight": 2,
+            "col": 7
+        },
+		{
+            "id": "02",
+            "symbol": "C",
+            "brand": "Google",
+            "name": "Magic Minutes",
+			"video": "/assets/videos/loop.mp4",
+            "offsetLeft": 2,
+            "offsetRight": 0,
+            "col": 7
+        },
+		{
+            "id": "03",
+            "symbol": "D",
+            "brand": "Google",
+            "name": "National Park 100th",
+			"video": "/assets/videos/loop.mp4",
+            "offsetLeft": 5,
+            "offsetRight": 0,
+            "col": 7
+        },
+        {
+            "container": true,
+            "id": "container01",
+            "children":[
+                {
+                    "id": "04",
+                    "symbol": "E",
+                    "brand": "Twitter",
+                    "name": "Marketing.com redesign",
+                    "video": "/assets/videos/loop.mp4",
+                    "offsetLeft": 0,
+                    "offsetRight": 1,
+                    "col": 5
+                },
+                {
+                    "id": "05",
+                    "symbol": "F",
+                    "brand": "Stinkdigital",
+                    "name": "Portfolio",
+                    "video": "/assets/videos/loop.mp4",
+                    "offsetLeft": 1,
+                    "offsetRight": 0,
+                    "col": 5
+                }
+            ]
+        },
+        {
+            "container": true,
+            "id": "container02",
+            "children":[
+                {
+                    "id": "06",
+                    "symbol": "G",
+                    "brand": "Spotify",
+                    "name": "Found them first",
+                    "video": "/assets/videos/loop.mp4",
+                    "offsetLeft": 1,
+                    "offsetRight": 0,
+                    "col": 5
+                },
+                {
+                    "id": "image01",
+                    "image": true,
+                    "imageSource": "https://pbs.twimg.com/media/C5m2YphWgAAO4g5.jpg:small",
+                    "offsetLeft": 2,
+                    "offsetRight": 0,
+                    "col": 3
+                }
+            ]
+        },
+        {
+            "container": true,
+            "id": "container03",
+            "children":[
+                {
+                    "id": "07",
+                    "symbol": "H",
+                    "brand": "Disney",
+                    "name": "Il etait une foret",
+                    "video": "/assets/videos/loop.mp4",
+                    "offsetLeft": 2,
+                    "offsetRight": 2,
+                    "col": 8
+                },
+                {
+                    "id": "quote01",
+                    "quote": true,
+                    "quoteContent": "Blend mix of thecnical skills and beauty",
+                    "offsetLeft": 1,
+                    "offsetRight": 0,
+                    "col": 5
+                }
+            ]
+        },
+        {
+            "id": "08",
+            "symbol": "I",
+            "brand": "WWF",
+            "name": "40 Year",
+            "video": "/assets/videos/loop.mp4",
+            "offsetLeft": 2,
+            "offsetRight": 2,
+            "col": 8
+        },
+		{
+            "id": "09",
+            "symbol": "J",
+            "brand": "Far Cry 4",
+            "name": "What are you made of",
+			"video": "/assets/videos/loop.mp4",
+            "offsetLeft": 2,
+            "offsetRight": 2,
+            "col": 8
+        }
+    ]
+}

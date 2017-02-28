@@ -1,0 +1,33 @@
+.section{
+    min-height: 100vh;
+}
+
+.photos__wrapper{
+
+    position: relative;
+    user-select: none;
+    z-index: 2;
+    pointer-events: none;
+    height: 100vh;
+    
+    img{
+        width: 100%;
+        height: auto;
+        pointer-events: none;
+    }
+
+    p{
+        pointer-events: none;
+    }
+
+}
+
+.background{
+    
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}   

@@ -1,0 +1,328 @@
+[
+    {   
+        "background": "#fff",
+        "sections": [
+            {   
+                "type":"text",
+                "value":"Photo - <br /> graphy",
+                "colClass": "grid__col-9",
+                "colStyles":{
+                    "marginLeft": "10%"
+                },
+                "styles":{
+                    "fontSize": "11em",
+                    "letterSpacing": "0.01em"
+                }
+            },
+            {   
+                "type":"text",
+                "value":"Click",
+                "colClass": "grid__col-3",
+                "colStyles":{
+                    "right": "5%",
+                    "marginTop": "60vh",
+                    "position": "absolute"
+                },
+                "styles":{
+                    "fontSize": "2em",
+                    "letterSpacing": "0.05em",
+                    "fontWeight": "700",
+                    "textTransform": "uppercase"
+                }
+            },
+            {
+                "type":"image",
+			    "src": "/assets/images/photo_intro.png",
+                "colClass": "grid__col-3",
+                "colStyles":{
+                    "marginLeft": "40%",
+                    "marginTop": "60vh",
+                    "position": "absolute"
+                }
+            }
+        ]
+    },
+    {   
+        "background": "#fff",
+        "sections": [
+            {   
+                "type":"text",
+                "value":"Photo - <br /> graphy",
+                "colClass": "grid__col-9",
+                "colStyles":{
+                    "marginLeft": "10%"
+                },
+                "styles":{
+                    "fontSize": "11em",
+                    "letterSpacing": "0.01em"
+                }
+            },
+            {   
+                "type":"text",
+                "value":"Click <br /> Click <br />",
+                "colClass": "grid__col-3",
+                "colStyles":{
+                    "right": "5%",
+                    "marginTop": "60vh",
+                    "position": "absolute"
+                },
+                "styles":{
+                    "fontSize": "2em",
+                    "letterSpacing": "0.05em",
+                    "fontWeight": "700",
+                    "textTransform": "uppercase"
+                }
+            },
+            {
+                "type":"image",
+			    "src": "/assets/images/photo_intro.png",
+                "colClass": "grid__col-3",
+                "colStyles":{
+                    "marginLeft": "40%",
+                    "marginTop": "60vh",
+                    "position": "absolute"
+                }
+            }
+        ]
+    },
+    {   
+        "background": "#fff",
+        "sections": [
+            {   
+                "type":"text",
+                "value":"Photo - <br /> graphy",
+                "colClass": "grid__col-9",
+                "colStyles":{
+                    "marginLeft": "10%"
+                },
+                "styles":{
+                    "fontSize": "11em",
+                    "letterSpacing": "0.01em"
+                }
+            },
+            {   
+                "type":"text",
+                "value":"Click <br /> Click <br /> Click <br />",
+                "colClass": "grid__col-3",
+                "colStyles":{
+                    "right": "5%",
+                    "marginTop": "60vh",
+                    "position": "absolute"
+                },
+                "styles":{
+                    "fontSize": "2em",
+                    "letterSpacing": "0.05em",
+                    "fontWeight": "700",
+                    "textTransform": "uppercase"
+                }
+            },
+            {
+                "type":"image",
+			    "src": "/assets/images/photo_intro.png",
+                "colClass": "grid__col-3",
+                "colStyles":{
+                    "marginLeft": "40%",
+                    "marginTop": "60vh",
+                    "position": "absolute"
+                }
+            }
+        ]
+    },
+    {   
+        "background": "#fff",
+        "sections": [
+            {   
+                "type":"text",
+                "value":"Photo - <br /> graphy",
+                "colClass": "grid__col-9",
+                "colStyles":{
+                    "marginLeft": "10%"
+                },
+                "styles":{
+                    "fontSize": "11em",
+                    "letterSpacing": "0.01em"
+                }
+            },
+            {   
+                "type":"text",
+                "value":"Click <br /> Click <br /> Click <br /> Got it ?",
+                "colClass": "grid__col-3",
+                "colStyles":{
+                    "right": "5%",
+                    "marginTop": "60vh",
+                    "position": "absolute"
+                },
+                "styles":{
+                    "fontSize": "2em",
+                    "letterSpacing": "0.05em",
+                    "fontWeight": "700",
+                    "textTransform": "uppercase"
+                }
+            },
+            {
+                "type":"image",
+			    "src": "/assets/images/photo_intro.png",
+                "colClass": "grid__col-3",
+                "colStyles":{
+                    "marginLeft": "40%",
+                    "marginTop": "60vh",
+                    "position": "absolute"
+                }
+            }
+        ]
+    },
+    {
+        "background": "#000",
+        "sections": [
+            {   
+                "type":"text",
+                "value":"Sommaire",
+                "colClass": "grid__col-9",
+                "colStyles":{
+                    "marginLeft": "10%",
+                    "marginTop": "10vh"
+                },
+                "styles":{
+                    "fontSize": "1em",
+                    "letterSpacing": "0.01em",
+                    "fontWeight": "700",
+                    "textTransform": "uppercase",
+                    "color": "white"
+                }
+            },
+            {
+                "type":"text",
+                "value":"West Coast Road Trip ( 20 photos )",
+                "colClass": "grid__col-9",
+                "indexClick": 1,
+                "colStyles":{
+                    "marginLeft": "10%"
+                },
+                "styles":{
+                    "fontSize": "3em",
+                    "letterSpacing": "0.01em",
+                    "color": "white",
+                    "pointerEvents": "auto"
+                }
+            },
+            {   
+                "type":"text",
+                "value":"New York City ( 20 photos )",
+                "colClass": "grid__col-9",
+                "colStyles":{
+                    "marginLeft": "10%"
+                },
+                "styles":{
+                    "fontSize": "3em",
+                    "letterSpacing": "0.01em",
+                    "color": "white"
+                }
+            },
+             {   
+                "type":"text",
+                "value":"Barcelona ( 20 photos )",
+                "colClass": "grid__col-9",
+                "colStyles":{
+                    "marginLeft": "10%"
+                },
+                "styles":{
+                    "fontSize": "3em",
+                    "letterSpacing": "0.01em",
+                    "color": "white"
+                }
+            },
+             {   
+                "type":"text",
+                "value":"Paris ( 20 photos )",
+                "colClass": "grid__col-9",
+                "colStyles":{
+                    "marginLeft": "10%"
+                    
+                },
+                "styles":{
+                    "fontSize": "3em",
+                    "letterSpacing": "0.01em",
+                    "color": "white"
+                }
+            },
+            {   
+                "type":"text",
+                "value":"Iceland ( 20 photos )",
+                "colClass": "grid__col-9",
+                "colStyles":{
+                    "marginLeft": "10%"
+                },
+                "styles":{
+                    "fontSize": "3em",
+                    "letterSpacing": "0.01em",
+                    "color": "white"
+                }
+            }
+        ]
+    },
+    {
+        "background": "#fff",
+        "sections": [
+            {   
+                "type":"text",
+                "value":"LAZY LOADING",
+                "colClass": "grid__col-9",
+                "colStyles":{
+                    "backgroundColor": "black",
+                    "position": "absolute",
+                    "width": "100vh",
+                    "transform": "rotate(-90deg) translateY(-100%)",
+                    "transformOrigin": "100% 0%",
+                    "top": "0px",
+                    "right": "0px",
+                    "display": "flex",
+                    "alignItems": "center",
+                    "justifyContent": "center"
+                },
+                "styles":{
+                    "fontSize": "7em",
+                    "letterSpacing": "0.01em",
+                    "fontWeight": "700",
+                    "textTransform": "uppercase",
+                    "color": "white",
+                    "padding" : "50px 0px"
+                }
+            },
+            {
+                "type":"image",
+			    "src": "/assets/images/nyc/test.jpg",
+                "width": 4823,
+                "height": 3635,
+                "colClass": "grid__col-7",
+                "colStyles":{
+                    "display": "flex",
+                    "height": "100%",
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "padding": "5%"
+                }
+            }
+           
+        ]
+    },
+    {
+        "background": "#fff",
+        "sections": [
+            {
+                "type":"background",
+			    "src": "/assets/images/nyc/DSC02089.jpg",
+                "colClass": "grid__col-12",
+                "colStyles":{
+                    "height": "100%",
+                    "padding": "0px"
+                },
+                "styles":{
+                    "background": "url(/assets/images/nyc/DSC01966.jpg) no-repeat center center fixed",
+                    "backgroundSize": "cover",
+                    "height": "100%"
+                }
+            }
+           
+        ]
+    }
+]

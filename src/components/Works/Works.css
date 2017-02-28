@@ -1,0 +1,172 @@
+.works-section{
+	max-width: 1366px;
+	margin: 0 auto;
+	min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+	margin-bottom: 25vh;
+}
+
+.works-wrapper{
+
+	margin-top: 20vh;
+	padding: 0px 3.75%;
+	position: relative;
+	z-index: 2;
+
+	.background{
+	
+		background-color: black;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		left: 0px;
+		z-index: 1;
+		opacity: 0;
+
+		&.isProjectHovered{
+			z-index: 4;
+			opacity: 1;
+		}
+	}
+}
+
+sidebar{
+	
+	position: absolute;
+	height: 100vh;
+	top: 0px;
+	right: 22px;
+	width: 50px;
+	z-index: 100;
+	pointer-events: none;
+	padding-top: 40px;
+    padding-bottom: 40px;
+	.sidebar_wrapper{
+		position: absolute;
+		
+		.sidebar_mask{
+			height: 36px;
+			overflow: hidden;
+		}
+
+		.digit{
+			display: inline-block;
+		}
+
+		.divider{
+			margin-left: 15px;
+		}
+
+		span{
+			font-family: 'GTSectraDisplay-Regular';
+			color: #1E1E1E;
+			font-size: 32px;
+			line-height: 36px;
+			font-weight:  400;
+			letter-spacing: 0.01em;
+			display: block;
+		}
+	}
+}
+
+.section-background{
+	background-color: black;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+	opacity: 0;
+
+	&.isProjectHovered{
+		opacity: 1;
+	}
+}
+
+.work-focus{
+
+	/*background-color: #2C2C2C;*/
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100vh;
+	z-index: 3;
+	pointer-events: none;
+
+	h2{
+
+		text-transform: uppercase;
+		font-family: 'Akkurat Pro';
+		color: #222222;
+		@mixin fontSize 60, 1366;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		color: white;
+		position: absolute;
+		top: 100px;
+		left: -60px;
+
+		&.right{
+
+			top: 40px;
+			right: 60px;
+			transform: translateX(100%);
+
+		}
+	}
+
+	.focus-desc-wrapper{
+
+		position: absolute;
+		width: 14%;
+		bottom: 30px;
+		right: 12%;
+
+		p{
+			font-family: 'Maison Neue Mono';
+			color: white;
+			opacity: 1;
+			@mixin fontSize 14, 1366;
+			line-height: 18px;
+			margin-left: auto;
+		}
+
+	}
+
+	.focus-role-wrapper{
+
+		position: absolute;
+		width: 12%;
+		bottom: 20px;
+		right: 2%;
+		
+		li{
+
+			list-style : none;
+			margin-bottom: 10px;
+
+			h5{
+				font-family: 'Maison Neue Mono';
+				color: white;
+				@mixin fontSize 12, 1366;
+				font-weight: 400;
+				margin-bottom: 5px;
+			}
+
+			p{
+				font-family: 'Akkurat Light Pro';
+				color:white;
+				@mixin fontSize 12, 1366;
+				font-weight: 200;
+				letter-spacing: 0.04em;
+				margin-bottom: 3px;
+			}
+		}
+
+	}
+
+}

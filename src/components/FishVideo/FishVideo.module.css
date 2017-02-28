@@ -1,0 +1,80 @@
+.section{
+    min-height: 500vh;
+    position: relative;
+}
+
+.thanks_wrapper{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.canvasContainer{
+    position: relative;
+    z-index: -1;
+}
+
+.luck {
+
+    font-family: 'Akkurat Light Pro';
+	font-weight:  200;
+	color: #2F2F2F;
+	/*font-family: 'GTSectraDisplay-Regular';*/
+    font-size: 30px;
+	font-weight:  400;
+	margin-bottom: 40px;
+	letter-spacing: 0.01em;
+	text-align: center;
+	margin-top: 100px;    
+    opacity: 0;
+
+}
+
+.thanks{
+
+    font-family: 'Akkurat Light Pro';
+	font-weight:  200;
+	color: #2F2F2F;
+	font-family: 'GTSectraDisplay-Regular';
+    font-size: 120px;
+	font-weight:  400;
+	margin-bottom: 40px;
+	letter-spacing: 0.01em;
+	text-align: center;
+	margin-top: 100px;
+    /*position: absolute;*/
+    opacity: 0;
+    white-space: nowrap;
+
+}
+
+.thank_wrapper01{
+    
+    position: absolute;
+    left: 60%;
+    top: 30%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.thank_wrapper02{
+    
+    position: absolute;
+    left: 30%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.thank_wrapper03{
+    
+    position: absolute;
+    left: 60%;
+    top: 70%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.luck_wrapper{
+    position: absolute;
+    left: 60%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}

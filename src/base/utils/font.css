@@ -1,0 +1,90 @@
+* {
+	text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+@font-face {
+  font-family: 'Akkurat Pro';
+  src: url('/assets/fonts/AkkBd_Pro_1.eot'); /* IE9 Compat Modes */
+  src: url('/assets/fonts/AkkBd_Pro_1.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/AkkBd_Pro_1.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/AkkBd_Pro_1.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/AkkBd_Pro_1.svg#8e4ac6878de559e681f53263f7ebda33') format('svg'); /* Legacy iOS */
+  font-style:   normal;
+  font-weight:  700;
+}
+
+@font-face {
+  font-family: 'Akkurat Pro';
+  src: url('/assets/fonts/AkkRg_Pro_1.eot'); /* IE9 Compat Modes */
+  src: url('/assets/fonts/AkkRg_Pro_1.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/AkkRg_Pro_1.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/AkkRg_Pro_1.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/AkkRg_Pro_1.svg#3478686034630b6bbb8f4a5751bfe071') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+
+
+@font-face {
+  font-family: 'Akkurat Light Pro';
+  src: url('/assets/fonts/AkkLg_Pro_1.eot'); /* IE9 Compat Modes */
+  src: url('/assets/fonts/AkkLg_Pro_1.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/AkkLg_Pro_1.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/AkkLg_Pro_1.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/AkkLg_Pro_1.svg#b5c01d1b960fd3c923f4c0466bcdd227') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  200;
+}
+
+@font-face {
+  font-family: 'GTSectraDisplay-Regular';
+  src: url('/assets/fonts/GT-Sectra-Display-Regular.eot'); /* IE9 Compat Modes */
+  src: url('/assets/fonts/GT-Sectra-Display-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/GT-Sectra-Display-Regular.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/GT-Sectra-Display-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/GT-Sectra-Display-Regular.svg#26585b4ce04f84b4902b369a5ecb8b2b') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+
+@font-face {
+  font-family: 'GTSectraDisplay-Bold';
+  src: url('/assets/fonts/GT-Sectra-Display-Bold.eot'); /* IE9 Compat Modes */
+  src: url('/assets/fonts/GT-Sectra-Display-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/GT-Sectra-Display-Bold.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/GT-Sectra-Display-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/GT-Sectra-Display-Bold.svg#220788d9ce80d90fe2fca1c59f0f85ac') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  700;
+}
+
+@font-face {
+  font-family: 'GTSectraDisplay-Light';
+  src: url('/assets/fonts/GT-Sectra-Display-Light.eot'); /* IE9 Compat Modes */
+  src: url('/assets/fonts/GT-Sectra-Display-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/GT-Sectra-Display-Light.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/GT-Sectra-Display-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/GT-Sectra-Display-Light.svg#1ee50a527b32846dbd22c7e42ba2c888') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  200;
+}
+
+@font-face {
+  font-family: 'Maison Neue Mono';
+  src: url('/assets/fonts/Maison Neue Mono.eot'); /* IE9 Compat Modes */
+  src: url('/assets/fonts/Maison Neue Mono.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/assets/fonts/Maison Neue Mono.woff') format('woff'), /* Modern Browsers */
+       url('/assets/fonts/Maison Neue Mono.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/assets/fonts/Maison Neue Mono.svg#af2fa94b953e46dc77e59983b9e9c303') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}

@@ -1,0 +1,381 @@
+.project-container{
+	flex-direction: row !important;
+}
+.quote{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	h3{
+		font-family: 'GTSectraDisplay-Light';
+		color: #2F2F2F;
+		font-size: 20px;
+		font-weight: normal;
+		margin-top: 15px;
+		margin-bottom: 5px;
+		letter-spacing: 0.05em;
+		opacity: 1;
+		/*text-decoration: underline;*/
+	}
+}
+
+.image{
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	img{
+		width:100%;
+		height: auto;
+	}	
+	
+}
+.work-item{
+
+    z-index: 3;
+	/*margin-top: 12vh;
+	margin-bottom: 12vh;*/
+
+	min-height: 90vh;
+	align-items: center;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+    &.isHovered{
+        z-index: 5;
+    }
+
+	.work-item_wrapper{
+		width: 100%;
+		display: block;
+		position: relative;
+	}
+
+	.season {
+
+		font-family: 'Maison Neue Mono';
+		color: white;
+		@mixin fontSize 20, 1366;
+		font-weight: 400;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+		position: absolute;
+		right: -21px;
+		top: 15px;
+		backface-visibility: hidden;
+		z-index: 12;
+		color: #000;
+		max-width: 50px;
+	}
+
+	
+	.work-asset{
+
+		.work-asset_wrapper{
+			width: 100% !important;
+			height: auto !important;
+			// pointer-events: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 9;
+			opacity: 1;
+			overflow: hidden;
+		}
+
+		.work-infos{
+
+			opacity: 0;
+			display: none;
+
+			min-width: 310px;
+
+			width: 50% !important;
+			height: auto !important;
+			// pointer-events: none;
+			position: absolute;
+			top: 0;
+			left: 40%;
+			right: 0;
+			bottom: 0;
+			z-index: 12;
+			opacity: 1;
+			line-height: normal;
+			align-items: center;
+			justify-content: center;
+
+			.infos-description{
+
+				font-family: 'Maison Neue Mono';
+				color: #000;
+				font-size: 11px;
+				line-height: 16px;
+				font-weight: 400;
+				
+			}
+
+			ul {
+				
+				padding: 0;
+				margin-top: 20px;
+
+				li {
+				
+				list-style: none;
+
+					.info-title{
+						font-family: 'Akkurat Pro';
+						color: #2F2F2F;
+						font-size: 12px;
+						font-weight: 700;
+						margin-top: 15px;
+						margin-bottom: 5px;
+						letter-spacing: 0.05em;
+						opacity: 1;
+					}
+
+					p{
+						font-family: 'Akkurat Pro';
+						color: #2F2F2F;
+						font-size: 12px;
+						font-weight: 400;
+						margin-bottom: 5px;
+						letter-spacing: 0.05em;
+						opacity: .5;
+					}
+				}
+			}
+		}
+		
+		cursor: pointer;
+		// overflow: hidden;
+    	line-height: 0;
+		position: relative;
+
+		&:before {
+			display: block;
+			content: "";
+			width: 100%;
+			padding-top: 60.74%;
+		}
+
+		.video-player{
+			width: 100% !important;
+			height: auto !important;
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 9;
+			opacity: 1;
+		}
+		
+		canvas{
+			pointer-events: none;
+		}
+
+		.title-wrapper{
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			z-index: 1;
+
+			h3{
+				font-family: 'Maison Neue Mono';
+				color: #000;
+				@mixin fontSize 80, 1366;
+				font-weight: 400;
+				opacity: 1;
+			}
+
+		}
+		.work-mask_click{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			/*background: red;*/
+			top:0;
+			bottom: 0;
+			opacity: 0;
+			z-index: 9;
+		}
+		.work-mask{
+			
+			position: absolute;
+			width: 30%;
+			height: 100%;
+			background: white;
+			top:0;
+			bottom: 0;
+			z-index: 10;
+
+			&.right{
+				right: 0;
+			}
+
+			&.top{
+
+				height: 10%;
+				width: 100%;
+				bottom: initial;
+
+			}
+
+			&.bottom{
+
+				height: 10%;
+				width: 100%;
+				bottom: 0;
+				top: initial;
+			}
+
+
+		}
+
+		.work-background{
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #A5A5A5;
+			z-index: 10;
+		}
+
+		.work-title{
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 11;
+
+			h2{
+				font-family: 'GTSectraDisplay-Regular';
+				font-weight: 400;
+				color: white;
+				font-size: 32px;
+				line-height: 36px;
+				font-weight:  400;
+				letter-spacing: 0.01em;
+			}
+			
+			
+		}
+
+	}
+
+	.title-back{
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 1;
+
+		h2{
+			font-family: 'GTSectraDisplay-Regular';
+			font-weight: 400;
+			color: #1E1E1E;
+			font-size: 32px;
+			line-height: 36px;
+			font-weight:  400;
+			letter-spacing: 0.01em;
+		}
+
+	}
+
+	.work-desc{
+
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		/*justify-content: center;*/
+		position: relative;
+		/*overflow: hidden;*/
+		pointer-events: none;
+
+		h2{
+			font-family: 'Akkurat Pro';
+			color: #222222;
+			font-size: 12px;
+			font-weight: 700;
+			margin-top: 15px;
+			margin-bottom: 5px;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+
+		p{
+			font-family: 'Maison Neue Mono';
+			color: #222222;
+			font-size: 12px;
+			font-weight: 400;
+			opacity: 0.5;
+		}
+
+		h4{
+			font-family: 'Maison Neue Mono';
+			color: #222222;
+			opacity: 0.2;
+			font-size: 20px;
+			margin-left: auto;
+
+		}
+
+	}
+
+	.link-wrapper {
+
+		position: absolute;
+		right: 0px;
+		bottom: 0px;
+		margin-top: 15px;
+
+		li{
+			list-style: none;	
+    		margin-bottom: 5px;
+
+			a{
+				font-family: 'Maison Neue Mono';
+				color: #000000;
+				opacity: 0.4;
+				@mixin fontSize 12, 1366;
+				text-decoration: none;
+			}
+		}
+	}
+
+}

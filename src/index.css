@@ -1,0 +1,36 @@
+/*@import 'sanitize.css/sanitize.css';*/
+@import 'normalize.css/normalize.css';
+@import './base/utils/grid.css';
+@import './base/utils/font.css';
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Akkurat Pro";
+	*{
+		margin: 0;
+	}
+}
+
+.statsjs{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 99;
+}
+
+.page-wrapper{
+	position: relative;
+	overflow: hidden;
+}
+
+.letter{
+	height: 70px;
+	line-height: 90px;
+	/*background-color: yellow;*/
+	display: inline-block;
+}
+
+/**{
+	border: 1px solid red;
+}*/
