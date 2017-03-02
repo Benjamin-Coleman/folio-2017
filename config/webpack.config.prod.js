@@ -135,8 +135,12 @@ module.exports = {
 				// removal of unnecessary prefixes when Uglify plugin is enabled.
 				// Webpack 1.x uses Uglify plugin as a signal to minify *all* the assets
 				// including CSS. This is confusing and will be removed in Webpack 2:
-				// https://github.com/webpack/webpack/issues/283
-				loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')
+				// https://github.com/webpack/webpack/issues/283&modules&importLoaders=1!postcss-loader
+				//loader: ExtractTextPlugin.extract('style', 'css-loader?modules&-autoprefixer&importLoaders=1!postcss-loader')
+
+				//here custom from tim to make sure post css is run properly before grabbing the css
+				loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&-autoprefixer&importLoaders=1!postcss-loader')
+
 				// Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
 			},
 			{
@@ -152,6 +156,7 @@ module.exports = {
 				loader: ExtractTextPlugin.extract('style', 'css?importLoaders=1&-autoprefixer!postcss')
 				// Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
 			},
+
 			// JSON is not enabled by default in Webpack but both Node and Browserify
 			// allow it implicitly so we also enable it.
 			{

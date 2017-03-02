@@ -9,7 +9,6 @@ import data from './Photos.json';
 // import { forceCheck } from 'react-lazyload';
 import LazyImage from './LazyImage'
 
-
 class Photos extends Component {
 
     static propTypes = {

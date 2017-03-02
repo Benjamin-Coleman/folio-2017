@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group' // ES6
 // import TransitionGroup from 'react-addons-transition-group';
 // import {Motion, spring, TransitionMotion} from 'react-motion';
-import TransitionGroup from 'react-addons-transition-group';
+// import TransitionGroup from 'react-addons-transition-group';
 import {TweenMax} from 'gsap';
 
 import './LazyImage.css';
@@ -37,8 +37,8 @@ class LazyImage extends Component {
 	componentDidMount(){
 
         console.log('this.props', this.props);
-        
-        this.el = this.refs.el;        
+
+        this.el = this.refs.el;
 
         this.lazyElement = null;
         this.top = 0;
@@ -70,13 +70,13 @@ class LazyImage extends Component {
 	   * @type {boolean}
 	   */
 		// this.isMobile =	this.props.isMobile === undefined || this.props.isMobile === null ? false : this.props.isMobile;
-        
+
 		this.setupListeners	=	{
 			resize: this.props.setupListeners !== undefined && this.props.setupListeners.resize !== undefined ? this.props.setupListeners.resize : true,
 			scroll: this.props.setupListeners !== undefined && this.props.setupListeners.scroll !== undefined ? this.props.setupListeners.scroll : true,
 			update: this.props.setupListeners !== undefined && this.props.setupListeners.update !== undefined ? this.props.setupListeners.update : true
 		};
-        
+
         /**
 	    * Are the events binded?
 	    * @access public
@@ -121,7 +121,7 @@ class LazyImage extends Component {
 			onResize: () => this.onResize(),
 			onUpdate: () => this.onUpdate()
 		};
-        
+
         // just a test to force load
         this.init();
         // this.load(true);
@@ -144,7 +144,7 @@ class LazyImage extends Component {
 		}
 
         this.lazyElement = this.createElement(this.refs.el);
-        
+
         if (this.lazyElement.error) {
             console.info('Lazyload error', this.lazyElement.errorMessage, this.refs.el);
         }
@@ -233,7 +233,7 @@ class LazyImage extends Component {
         // let element = this.lazyElement;
 
         console.log('force_', force_);
-        
+
         var isVisible = force_ ? true : this.isVisible();
 
         if (this.debug) console.info('LazyLoad.prototype.load: load ?', this, 'isVisible', isVisible, 'loaded', this.state.isLoaded, 'loading?', this.state.isLoading);
@@ -243,7 +243,7 @@ class LazyImage extends Component {
         if (this.debug) console.info('LazyLoad.prototype.load: loading!', this);
 
         this.loadImage();
-		
+
 	}
 
     onResize (viewport_) {
@@ -272,7 +272,7 @@ class LazyImage extends Component {
 
     onUpdate(check_) {
         console.log('onUpdate');
-        
+
 		// once everything is loaded, no need to check
 		if (this.allLoaded) return;
 
@@ -319,7 +319,7 @@ class LazyImage extends Component {
 
 		// misc
 		// TODO
-        
+
         // if (el_ instanceof HTMLElement) element.height = el_.getAttribute('data-height') !== null ? parseInt(el_.getAttribute('data-height'), 0) : el_.clientHeight;
 		// if (el_ instanceof HTMLElement) element.heightMobile = el_.getAttribute('data-height-m') !== null ? parseInt(el_.getAttribute('data-height-m'), 0) : el_.clientHeight;
 		// if (el_ instanceof HTMLElement) element.width = el_.getAttribute('data-width') !== null ? parseInt(el_.getAttribute('data-width'), 0) : el_.clientWidth;
@@ -327,7 +327,7 @@ class LazyImage extends Component {
 		// if (el_ instanceof HTMLElement) element.top = el_.getBoundingClientRect().top + this.scrollY;
 		// if (el_ instanceof HTMLElement) element.useBackground =  el_.getAttribute('data-use-background') !== null ? el_.getAttribute('data-use-background') === 'true' : false;
         console.log('this.props.type', this.props.type);
-        
+
         this.type = this.props.type !== null ? this.validateType(this.props.type) : this.getType(this.source);
 
 		if (this.type === null) {
@@ -385,7 +385,7 @@ class LazyImage extends Component {
 		this.image = img;
 
         console.log('this.image', this.image);
-        
+
 		var isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
 		// var isSafari = true;
 
@@ -432,7 +432,7 @@ class LazyImage extends Component {
                     img.addEventListener('load', this.handlers.onImageLoaded);
                     img.addEventListener('onerror', this.handlers.onImageError);
                     img.src = this.imageUrl;
-                        
+
 					} else {
 
 						this.xhr.abort();
@@ -504,7 +504,7 @@ class LazyImage extends Component {
         console.log('------------- onImageLoaded');
         console.log('this.image', this.image);
         console.log('this.image', this.image.src);
-        
+
 		// var img_ = e instanceof HTMLElement ? e : e.target || e.path[0];
         // let element_ = this.lazyElement;
 
@@ -518,7 +518,7 @@ class LazyImage extends Component {
 		// }
 
 		// if (element_ === null) return;
-        
+
 
 		// remove listener otherwise it keeps triggering if no cache
 		this.image.removeEventListener('load', this.handlers.onImageLoaded);
@@ -554,31 +554,31 @@ class LazyImage extends Component {
         // callback props
         this.props.onLoaded();
         this.showImage();
-        
+
         //Done for this one so unbind
         this.unbindEvents();
 
 		//this.showElement(element_);
 
 	};
-    
+
     // for now since i'm having issue with JSX and class/set using tweenmax for animation
     showImage() {
 
     }
 
     componentDidUpdate(prevProps, prevState){
-        
+
         console.log('prevState', prevState);
         console.log('state', this.state);
-        
+
         if(prevState.isLoaded === false && this.state.isLoaded === true){
-            
+
             setTimeout(() => {
                 TweenMax.to(this.refs.image, 1 ,{autoAlpha: 1});
             }, 0);
         }
-        
+
     }
 
     // showElement (element_) {
@@ -592,14 +592,14 @@ class LazyImage extends Component {
 	// 	// 		// element_.container.classList.add('show');
 	// 	// 		// element_.container.classList.add('loaded');
 	// 	// 	}
-        
+
 
 	// 	// 	element_.isShown = true;
 
 	// 	// }, 300);
-        
+
 	// 	// this.checkIfAllLoaded();
-       
+
 
 	// };
 
@@ -621,7 +621,7 @@ class LazyImage extends Component {
 	}
 
     // renderImage() {
-       
+
     //     const {width, height} = this.props;
 
     //     let image;
@@ -636,11 +636,11 @@ class LazyImage extends Component {
     //     (ri > rs) ? (new_dimensions.ratio = hs/hi, new_dimensions.w = Math.ceil(wi * hs/hi, new_dimensions.h = hs)) : ( new_dimensions.ratio = ws/wi, new_dimensions.w = ws, new_dimensions.h = Math.ceil(hi * ws/wi));
 
     //     new_dimensions.top = (hs - new_dimensions.h)/2;
-    //     new_dimensions.left = (ws - new_dimensions.w)/2;    
-        
+    //     new_dimensions.left = (ws - new_dimensions.w)/2;
+
     //     console.log('ri', ri);
     //     console.log('new_dimensions', new_dimensions);
-        
+
 
     //     const imageStyles = {
     //         width: new_dimensions.w,
@@ -663,12 +663,12 @@ class LazyImage extends Component {
         const {isLoaded, isLoading} = this.state;
 
         const ratio = (height / width) * 100 + '%';
-        
+
         const styles = {
             paddingTop : ratio
         }
         const classNameLazy = (isLoaded ? ' loaded' : '') + (isLoading ? ' loading' : '') +  " lazy";
-        
+
         var wi = width;
         var hi = height;
         var ri = wi/hi;
@@ -680,8 +680,8 @@ class LazyImage extends Component {
         (ri > rs) ? (new_dimensions.ratio = hs/hi, new_dimensions.w = Math.ceil(wi * hs/hi, new_dimensions.h = hs)) : ( new_dimensions.ratio = ws/wi, new_dimensions.w = ws, new_dimensions.h = Math.ceil(hi * ws/wi));
 
         new_dimensions.top = (hs - new_dimensions.h)/2;
-        new_dimensions.left = (ws - new_dimensions.w)/2;    
-        
+        new_dimensions.left = (ws - new_dimensions.w)/2;
+
         const imageStyles = {
             width: new_dimensions.w,
             height: new_dimensions.h,
@@ -694,7 +694,7 @@ class LazyImage extends Component {
                { this.state.isLoaded && <img ref="image" style={imageStyles} src={this.imageUrl} data-pin-url="/" role="presentation" />}
             </div>
         );
-	
+
 	}
 }
 

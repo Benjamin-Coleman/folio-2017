@@ -29,7 +29,7 @@ Object.assign(PIXI.filters, customFilters);
 class FishVideo extends Component {
 
     constructor(props){
-        
+
         super(props);
 
         this.edge = 0;
@@ -37,7 +37,7 @@ class FishVideo extends Component {
     }
 
 	componentDidMount(){
-        
+
         this.setupScene();
         this.resize();
 
@@ -67,24 +67,20 @@ class FishVideo extends Component {
 
 			},
             {
-                start: this.top,
-				end: this.top + thirdRatio,
-                initialValue : 0,
-                finalValue : 1,
-                property : 'opacity',
-                ease : 0.1,
-                viewFactorStart : 0,
-                viewFactorEnd : 1
-            },
-            {
                 start: this.top + thirdRatio * 5,
 				end: this.top + thirdRatio * 6,
                 initialValue : 1,
                 finalValue : 0.05,
                 property : 'opacity',
-                ease : 0.1,
-                viewFactorStart : 0,
-                viewFactorEnd : 1
+                ease : 0.1
+            },
+            {
+                start: this.top,
+				end: this.top + thirdRatio,
+                initialValue : 0,
+                finalValue : 1,
+                property : 'opacity',
+                ease : 0.1
             }
             ]
 		};
@@ -107,24 +103,20 @@ class FishVideo extends Component {
 
 			},
             {
-                start: this.top + thirdRatio,
-				end: this.top + thirdRatio * 2,
-                initialValue : 0,
-                finalValue : 1,
-                property : 'opacity',
-                ease : 0.1,
-                viewFactorStart : 0,
-                viewFactorEnd : 1
-            },
-            {
                 start: this.top + thirdRatio * 5,
 				end: this.top + thirdRatio * 6,
                 initialValue : 1,
                 finalValue : 0.05,
                 property : 'opacity',
-                ease : 0.1,
-                viewFactorStart : 0,
-                viewFactorEnd : 1
+                ease : 0.1
+            },
+            {
+                start: this.top + thirdRatio,
+				end: this.top + thirdRatio * 2,
+                initialValue : 0,
+                finalValue : 1,
+                property : 'opacity',
+                ease : 0.1
             }
             ]
 		};
@@ -147,24 +139,20 @@ class FishVideo extends Component {
 
 			},
             {
-                start: this.top + thirdRatio,
-				end: this.top + thirdRatio * 3,
-                initialValue : 0,
-                finalValue : 1,
-                property : 'opacity',
-                ease : 0.1,
-                viewFactorStart : 0,
-                viewFactorEnd : 1
-            },
-            {
                 start: this.top + thirdRatio * 5,
 				end: this.top + thirdRatio * 6,
                 initialValue : 1,
                 finalValue : 0.05,
                 property : 'opacity',
-                ease : 0.1,
-                viewFactorStart : 0,
-                viewFactorEnd : 1
+                ease : 0.1
+            },
+            {
+                start: this.top + thirdRatio,
+				end: this.top + thirdRatio * 3,
+                initialValue : 0,
+                finalValue : 1,
+                property : 'opacity',
+                ease : 0.1
             }
             ]
 		};
@@ -212,25 +200,21 @@ class FishVideo extends Component {
                 initialValue : 0,
                 finalValue : 1,
                 property : 'opacity',
-                ease : 0.1,
-                viewFactorStart : 0,
-                viewFactorEnd : 1
+                ease : 0.1
             }
             ]
 		};
         let elementCanvas = {
 			el: this.refs.canvasContainer,
 			animations: [
-				
+
                 {
                     start: this.top + heightRation * 2,
                     end: this.top + heightRation * 2 + thirdRatio,
                     initialValue : 0,
                     finalValue : 1,
                     property : 'opacity',
-                    ease : 0.1,
-                    viewFactorStart : 0,
-                    viewFactorEnd : 1
+                    ease : 0.1
                 }
             ]
 		};
@@ -254,7 +238,7 @@ class FishVideo extends Component {
             transparent: true
         });
 
-        //Add the canvas to the HTML document 
+        //Add the canvas to the HTML document
         this.refs.canvasContainer.appendChild(this.renderer.view);
 
         //Create a container object called the `stage`
@@ -265,7 +249,7 @@ class FishVideo extends Component {
 
         this.container = new PIXI.Container();
 
-        // this.catSetup();
+        this.catSetup();
         //this.videoSetup();
     }
 
@@ -274,19 +258,19 @@ class FishVideo extends Component {
         var texture = PIXI.Texture.fromImage('../assets/images/maneki.jpg');
         texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
         texture.baseTexture.mipmap=false;
-        
+
         // create a new Sprite using the video texture (yes it's that easy)
         var catSprite = new PIXI.Sprite(texture);
 
         catSprite.position.set(window.innerWidth / 2, window.innerHeight / 2);
         catSprite.anchor.set(0.5);
         catSprite.scale.set(.5, .5);
-        
+
         // this.ShockwaveFilter = new filtersTest.ShockwaveFilter();
 
         this.DotFilter = new filters.DotFilter();
         this.distortFilter = new customFilters.DistortFilter();
-        
+
         this.distortFilter.time = 0;
         this.distortFilter.res = { x: window.innerWidth, y: window.innerHeight};
         this.distortFilter.noiseTexture = PIXI.Texture.fromImage('../assets/images/noise.png');
@@ -299,7 +283,7 @@ class FishVideo extends Component {
         this.container.addChild(catSprite);
         this.stage.addChild(this.container);
 
-        
+
         this.bindEvents();
 
     }
@@ -340,10 +324,10 @@ class FishVideo extends Component {
         // this.container.filters = [this.BloomFilter];
 
         this.TiltShiftFilter = new filters.TiltShiftFilter();
-        
+
         this.BloomFilter = new filters.BloomFilter();
         this.BloomFilter.blur = 1;
-        
+
         this.TwistFilter = new filters.TwistFilter();
         this.TwistFilter.radius = 300;
         this.TwistFilter.angle = 5;
@@ -361,7 +345,7 @@ class FishVideo extends Component {
 
         this.distortFilter.time = 0;
         this.distortFilter.res = { x: window.innerWidth, y: window.innerHeight};
-        
+
         // this.container.filters = [this.distortFilter];
 
         // this.container.filters = [this.TwistFilter];
@@ -372,7 +356,8 @@ class FishVideo extends Component {
     }
 
     bindEvents(){
-        
+        console.log('bindEvents');
+
         this.update = (e) => this.rafUpdate(e);
         GlobalStore.get('rafCallStack').push(this.update);
         GlobalStore.on('change:viewport', () => this.resize());
@@ -388,7 +373,8 @@ class FishVideo extends Component {
 
 		// If we are before/after the first/`last frame, set the styles according first/last value.
 		// if(before || after) {
-        
+        console.log('scrollUpdate');
+
         if(before) {
 
             // we are at firt or last and allready setStyle to reach initial/final Value
@@ -409,7 +395,7 @@ class FishVideo extends Component {
 				this.edge = 0;
 				this.active = true;
 				// SHOW HERE
-				console.log('active');
+				console.log('active !!!');
                 this.refs.wrapper.style.position = 'fixed';
 				this.refs.wrapper.style.top = '0px';
 			}
@@ -436,7 +422,7 @@ class FishVideo extends Component {
 
         // videoSprite.filters=[ this.displacementFilterVideo];
 
-        this.container.addChild(videoSprite); 
+        this.container.addChild(videoSprite);
 
     }
 
@@ -446,7 +432,7 @@ class FishVideo extends Component {
 
         if(this.active){
             this.loop +=1;
-                        
+
             // this.displacementFilter.scale.x = Math.cos(this.loop) * 3000;
             // this.displacementFilter.scale.y = Math.cos(this.loop) * 3000;
             // this.displacementSprite.y = this.loop;
@@ -469,9 +455,9 @@ class FishVideo extends Component {
             if (this.distortFilter) {
                 this.distortFilter.time += 0.01;
             }
-        
+
         }
-       
+
         this.stats.end();
 
     }
@@ -480,7 +466,9 @@ class FishVideo extends Component {
 
         this.top = getPositionStart(this.refs.el, GlobalStore.get('viewport').height) + GlobalStore.get('viewport').height;;
         this.bottom = getPositionEnd(this.refs.el, GlobalStore.get('viewport').height);
-        
+        console.log('this.top', this.top);
+        console.log('this.top', this.bottom);
+
     }
 
 	render() {

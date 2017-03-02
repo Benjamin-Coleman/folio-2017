@@ -185,7 +185,6 @@ module.exports = {
 			postcssReporter({ // Posts messages from plugins to the terminal
 				clearMessages: true,
 			}),
-			
 		];
 	},
 	plugins: [

@@ -2,9 +2,9 @@ import React, { Component, PropTypes } from 'react'
 import Intro from './Intro/Intro.js'
 import FeaturedProjects from './FeaturedProjects/FeaturedProjects.js'
 import Works from './Works/Works.js'
-import WorkFocus from './Works/WorkFocus.js'
+// import WorkFocus from './Works/WorkFocus.js'
 import About from './About/About.js'
-import Photos from './Photos/Photos.js'
+// import Photos from './Photos/Photos.js'
 
 import Smooth from '../vendors/smooth';
 import GlobalStore from '../base/globalStore';
@@ -20,17 +20,17 @@ class MainSection extends Component {
 	}
 
 	componentDidMount () {
-		
+
 		this.onResize();
 		this.scrollManager = new ScrollManager();
 
 		TweenMax.ticker.addEventListener("tick", (e) => this.raf());
-		
+
 		//this.smooth = new Smooth({smoothContainer: true, smoothSection:this.refs.el});
 		this.smooth = new Smooth({smoothContainer: false});
 		this.smoothElements = [];
 		this.smooth.init();
-		
+
 		const worksRef = this.refs.works.getWrappedInstance().refs;
 		let element = {
 			el : worksRef.work09.refs.workItem,
@@ -52,13 +52,13 @@ class MainSection extends Component {
 				}
 			]
 		};
-		
+
 		// var body = document.body,
     	// html = document.documentElement;
 
-		// const height = Math.max( body.scrollHeight, body.offsetHeight, 
+		// const height = Math.max( body.scrollHeight, body.offsetHeight,
 		// 	html.clientHeight, html.scrollHeight, html.offsetHeight );
-		
+
 		// let elementFocus = {
 		// 	el : this.refs.worksFocus.refs.el,
 		// 	animations : [
@@ -79,7 +79,7 @@ class MainSection extends Component {
 		// 		}
 		// 	]
 		// };
-		
+
 		this.smooth.addElement(element);
 		// this.smooth.addElement(elementFocus);
 		// this.smooth.start();
@@ -91,7 +91,7 @@ class MainSection extends Component {
 
 		const width = this.getWidth();
 		const height = this.getHeight();
-		
+
 		// this.props.actions.screenResize({ width : width , height : height});
 		GlobalStore.set('viewport', {
 			width: width,
