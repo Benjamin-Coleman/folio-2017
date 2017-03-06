@@ -3,14 +3,77 @@
     [
         {
             "id": "00",
+            "symbol": "Alexandre Rochet",
+            "brand": "ALEXANDRE ROCHET",
+            "role": "Creative Developer & Interaction Designer",
+			"videoSourceMP4": "/assets/videos/alex.mp4",
+            "season": "SS 016",
+            "offsetLeft": 1,
+            "offsetRight": 2,
+            "col": 8,
+            "description":"Had a blast working with my friend Alexandre to build is new portfolio. </br> I was in charge of the coding and interaction design. There is a lot of small details in the motion, like the parallax on the homepage, the spring physic of the menu, the animation of the letters or the displacement map applied to his face ( sorry Alex :))   etc... </br> Have fun exploring the website!",
+            "agency": "Stink Studios",
+            "dev": "Css animation, Homemade framework",
+            "awards": "FWA, awwwards",
+            "link":{
+                "label": "Visit Website ¬",
+                "url": "https://insidediscovery.pitchfork.com/"
+            }
+        },
+         {
+            "container": true,
+            "id": "container01",
+            "children":[
+               {
+                    "id": "01",
+                    "symbol": "Magic Minute Project",
+                    "brand": "Android Wear",
+                    "role": "Lead Developer & Motion",
+                    "name": "Portfolio",
+                    "videoSourceMP4": "/assets/videos/magicminutes.mp4",
+                    "season": "AW 016",
+                    "offsetLeft": 1,
+                    "offsetRight": 1,
+                    "col": 5,
+                    "description":"What’s possible in a minute? You can fall in love. Launch a rocket ship. Set a rap world record. <br/>We partnered together with Android Wear and Chapter, and teamed up with with makers, doers, and dreamers to launch The Magic Minute Project. It’s a collection of one-minute films celebrating what time means to all of us—told one #MagicMinute at a time.",
+                    "agency": "Stink Studios & Chapter",
+                    "dev": "Css animation, Homemade framework",
+                    "link":{
+                        "label": "Visit Website ¬",
+                        "url": "https://magicminute.withgoogle.com/"
+                    }
+                },
+                {
+                    "id": "02",
+                    "symbol": "The Hidden Worlds of the National Parks",
+                    "brand": "Google",
+                    "role": "Creative Developer",
+                    "name": "National Park 100th",
+                    "videoSourceMP4": "/assets/videos/loop.mp4",
+                    "season": "AW 016",
+                    "offsetLeft": 1,
+                    "offsetRight": 0,
+                    "col": 5,
+                    "description":"An interactive tour of America’s most beautiful national parks. Follow rangers on an immersive adventure through five National Parks. Rappel into a crevasse, fly with thousands of bats, soar over an active volcano, dive through shipwrecks, and experience the Milky Way in 360° video and ambisonic audio.",
+                    "agency": "Stink Studios",
+                    "dev": "React, ThreeJS, 360 videos, 4 totaly custom modules",
+                    "link":{
+                        "label": "Visit Website ¬",
+                        "url": "https://magicminute.withgoogle.com/"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "03",
             "symbol": "Inside Discovery",
             "brand": "PITCHFORK & SPOTIFY",
             "role": "Creative Developer & UX Designer",
             "season": "SS 016",
-			"video": "/assets/videos/loop.mp4",
+			"videoSourceMP4": "/assets/videos/spotify_pitchfork.mp4",
             "offsetLeft": 2,
             "offsetRight": 2,
-            "col": 8,
+            "col": 7,
             "description":"We worked together with Pitchfork and Spotify to create Inside Discovery. A editorial interactive website that let user have a look into fresh Discover Weekly playlists from Pitchfork editors and their favorite artists.",
             "agency": "Stink Studios",
             "dev": "Css animation, Homemade framework",
@@ -20,75 +83,26 @@
                 "url": "https://insidediscovery.pitchfork.com/"
             }
         },
-		{
-            "id": "01",
-            "symbol": "B",
-            "brand": "ALEXANDRE ROCHET",
-            "name": "Portfolio",
-			"video": "/assets/videos/loop.mp4",
-            "offsetLeft": 0,
-            "offsetRight": 2,
-            "col": 7
-        },
-		{
-            "id": "02",
-            "symbol": "C",
-            "brand": "Google",
-            "name": "Magic Minutes",
-			"video": "/assets/videos/loop.mp4",
-            "offsetLeft": 2,
-            "offsetRight": 0,
-            "col": 7
-        },
-		{
-            "id": "03",
-            "symbol": "D",
-            "brand": "Google",
-            "name": "National Park 100th",
-			"video": "/assets/videos/loop.mp4",
-            "offsetLeft": 5,
-            "offsetRight": 0,
-            "col": 7
-        },
         {
             "container": true,
-            "id": "container01",
+            "id": "container03",
             "children":[
-                {
+               {
                     "id": "04",
-                    "symbol": "E",
+                    "symbol": "Twitter MTC",
+                    "videoSourceMP4": "/assets/videos/mtc.mp4",
+                    "season": "AW 016",
+                    "offsetLeft": 1,
+                    "col": 5,
                     "brand": "Twitter",
-                    "name": "Marketing.com redesign",
-                    "video": "/assets/videos/loop.mp4",
-                    "offsetLeft": 0,
-                    "offsetRight": 1,
-                    "col": 5
-                },
-                {
-                    "id": "05",
-                    "symbol": "F",
-                    "brand": "Stinkdigital",
-                    "name": "Portfolio",
-                    "video": "/assets/videos/loop.mp4",
-                    "offsetLeft": 1,
-                    "offsetRight": 0,
-                    "col": 5
-                }
-            ]
-        },
-        {
-            "container": true,
-            "id": "container02",
-            "children":[
-                {
-                    "id": "06",
-                    "symbol": "G",
-                    "brand": "Spotify",
-                    "name": "Found them first",
-                    "video": "/assets/videos/loop.mp4",
-                    "offsetLeft": 1,
-                    "offsetRight": 0,
-                    "col": 5
+                    "role": "Prototypes Developer, UX & Motion",
+                    "description":"We partnered with Twitter to prototype and design a new platform full of inspiration, solutions and tools to help marketers and agencies capitalize on the power of Twitter. <br/>It’s more than a platform—it’s an integral part of global culture. However, that hasn’t always translated to advertising revenue, and as Twitter matures it needs to demonstrate its potential to help brands reach their audiences in meaningful ways.",
+                    "agency": "Stink Studios",
+                    "dev": "Design Guideline, Full HTML & Motion design prototypes",
+                    "link":{
+                        "label": "Case study ¬",
+                        "url": "https://www.behance.net/gallery/41645265/Twitter-Marketing-Platform"
+                    }
                 },
                 {
                     "id": "image01",
@@ -101,18 +115,44 @@
             ]
         },
         {
+            "id": "05",
+            "symbol": "Stink Studios",
+            "brand": "New Portfolio",
+            "videoSourceMP4": "/assets/videos/sd.mp4",
+            "offsetLeft": 1,
+            "offsetRight": 0,
+            "col": 7,
+            "season": "AW 016",
+            "role": "Lead Creative Developer",
+            "description":"In 2016 we launched the new version on StinkDigital portfolio, now called Stink Studios : A global creative studio for a digital-first world.",
+            "agency": "Stink Studios",
+            "dev": "Isomorphic Rendering, gradient shader, custom Lazy loading, fast page : 2mo desktop, 1mo mobile",
+            "link":{
+                "label": "Visit Website ¬",
+                "url": "www.stinkstudios.com"
+            }
+        },
+        {
             "container": true,
-            "id": "container03",
+            "id": "container02",
             "children":[
                 {
-                    "id": "07",
-                    "symbol": "H",
-                    "brand": "Disney",
-                    "name": "Il etait une foret",
-                    "video": "/assets/videos/loop.mp4",
-                    "offsetLeft": 2,
-                    "offsetRight": 2,
-                    "col": 8
+                    "id": "06",
+                    "brand": "Spotify",
+                    "symbol": "Found them first",
+                    "videoSourceMP4": "/assets/videos/ftf.mp4",
+                    "offsetLeft": 1,
+                    "offsetRight": 0,
+                    "col": 5,
+                    "season": "AW 016",
+                    "role": "Creative Developer",
+                    "description": "This is the second in a series of B-Sides data experiments for Spotify. <br/>Found Them First compares your individual Spotify listening history to global data in order to reveal just how many artists you discovered before the tidal wave of mainstream acceptance hit.",
+                    "agency": "Stink Studios & ",
+                    "dev": "PixiJS",
+                    "link":{
+                        "label": "Case study ¬",
+                        "url": "https://www.behance.net/gallery/41645265/Twitter-Marketing-Platform"
+                    }
                 },
                 {
                     "id": "quote01",
@@ -125,24 +165,71 @@
             ]
         },
         {
-            "id": "08",
-            "symbol": "I",
-            "brand": "WWF",
-            "name": "40 Year",
-            "video": "/assets/videos/loop.mp4",
+            "id": "07",
+            "symbol": "Il etait une foret",
+            "brand": "Luc Jacquet",
+            "name": "Il etait une foret",
+            "videoSourceMP4": "/assets/videos/ieuf.mp4",
             "offsetLeft": 2,
             "offsetRight": 2,
-            "col": 8
+            "col": 8,
+            "season": "AW 014",
+            "role": "Lead Developer",
+            "description": "Immerse yourself in an expedition to the heart of the tropical primary forests. In the footsteps of the team of the film, discover this incredible universe and learn to detect its codes.",
+            "agency": "Freelance",
+            "link":{
+                "label": "Visit the website ¬",
+                "url": "http://iletaituneforet-expedition.org/"
+            }
+        },
+        {
+            "container": true,
+            "id": "container04",
+            "children":[
+                {
+                    "id": "image02",
+                    "image": true,
+                    "imageSource": "/assets/images/beauty.jpg",
+                    "offsetLeft": 1,
+                    "offsetRight": 2,
+                    "col": 3
+                },
+               {
+                    "id": "08",
+                    "symbol": "I",
+                    "brand": "WWF",
+                    "name": "40 Years",
+                    "videoSourceMP4": "/assets/videos/wwf.mp4",
+                    "offsetLeft": 1,
+                    "offsetRight": 1,
+                    "col": 5,
+                    "role": "UX Designer",
+                    "description":"We partnered with WWF to laucnh an interactive website showcasing 40 Years of Commitment to the Planet",
+                    "agency": "Freelance",
+                    "link":{
+                        "label": "Visit the website ¬",
+                        "url": "http://40.wwf.fr/fr"
+                    }
+                }
+            ]
         },
 		{
             "id": "09",
-            "symbol": "J",
+            "symbol": "What are you made of?",
             "brand": "Far Cry 4",
-            "name": "What are you made of",
-			"video": "/assets/videos/loop.mp4",
+			"videoSourceMP4": "/assets/videos/farcry.mp4",
             "offsetLeft": 2,
             "offsetRight": 2,
-            "col": 8
+            "col": 8,
+            "season": "AW 014",
+            "role": "Creative Developer",
+            "description": "What are you made of ? is a rich and mind-bending interactive film experience for the launch of Far Cry 4. Reveal your personality through 4 rites where every decision you make changes the course of the experience!.",
+            "agency": "Stink Studios Paris",
+            "dev": "ThreeJS, custom video modules, binaural sounds",
+            "link":{
+                "label": "Case study ¬",
+                "url": "https://www.behance.net/gallery/41645265/Twitter-Marketing-Platform"
+            }
         }
     ]
 }

@@ -34,9 +34,9 @@ class WorkItem extends Component {
 	}
 
     componentDidMount(){
-                
-        // this.props.setProjectActive(this.props.data.id);  
-        
+
+        // this.props.setProjectActive(this.props.data.id);
+
         this.el = this.refs.workItem;
         this.item = this.el.querySelector('.work-asset_wrapper');;
         this.elDesc = this.el.querySelector('.desc-wrapper');
@@ -52,10 +52,10 @@ class WorkItem extends Component {
         this.elPLayer = this.el.querySelector('.video-player');
         this.elLinks = this.el.querySelector('.link-wrapper');
 
-        const url = "/assets/videos/loop.mp4";
-        this.setState({
-            url
-        });
+        // const url = "/assets/videos/loop.mp4";
+        // this.setState({
+        //     url
+        // });
 
         this.setupDom();
         this.bindEvents();
@@ -63,7 +63,7 @@ class WorkItem extends Component {
 
     bindEvents() {
         console.log('this.elVideo', this.elVideo);
-        
+
         GlobalStore.on('change:viewport', () => this.resize());
 		GlobalStore.on('change:scroll', () => this.scrollUpdate());
 
@@ -78,7 +78,7 @@ class WorkItem extends Component {
 
 		// If we are before/after the first/`last frame, set the styles according first/last value.
 		// if(before || after) {
-        
+
         if(before || after) {
 
             // we are at firt or last and allready setStyle to reach initial/final Value
@@ -93,7 +93,7 @@ class WorkItem extends Component {
             }
 
 		} else {
-			
+
 			if (!this.state.preActive) {
 				this.edge = 0;
 				this.setState({preActive: true});
@@ -113,14 +113,14 @@ class WorkItem extends Component {
         // this.resize();
         const halfHeight = this.item.offsetHeight / 2;
         console.log('halfHeight', halfHeight);
-        
+
         // TweenMax.set(this.el, {scaleX: 0.9, scaleY: 0.9});
         TweenMax.set(this.refs.maskLeft, {x:'-100%'});
         TweenMax.set(this.refs.maskRight, {x:'100%'});
         TweenMax.set(this.refs.maskTop, {y:'-100%'});
         TweenMax.set(this.refs.maskBottom, {y:'100%'});
         TweenMax.set(this.elPLayer, {y:'50%'});
-        
+
         // this.tlShowFocus = new TimelineMax({
         //     paused: true
         // });
@@ -134,7 +134,7 @@ class WorkItem extends Component {
             paused: true,
             onComplete: () => this.playVideo()
         });
-        
+
         const distance = - halfHeight - 40;
 
         this.tlDisplayVideo
@@ -151,7 +151,7 @@ class WorkItem extends Component {
         e.preventDefault();
 
         if(!this.infoDisplayed){
-            
+
             this.refs.infos.style.display = 'flex';
             this.refs.infos.style.opacity = 1;
 
@@ -171,7 +171,7 @@ class WorkItem extends Component {
             const distance = this.item.offsetWidth * 0.375;
             const distanceTitle = this.item.offsetWidth * 0.0625;
             console.log('distance', distance);
-            
+
             this.tlDisPlayInfo.to(this.refs.maskLeft, .8, {x:'0%', ease: Power2.easeInOut},0)
                 .to(this.refs.maskRight, .8, {x:'0%', ease: Power2.easeInOut},0)
                 .to(this.refs.maskBottom, .8, {y:'0%', ease: Power2.easeInOut},0)
@@ -203,7 +203,7 @@ class WorkItem extends Component {
         }
 
     }
-    
+
     onActive(e) {
 
         if(this.timer){
@@ -214,14 +214,14 @@ class WorkItem extends Component {
             this.timer = TweenMax.delayedCall( 1, () => this.triggerActive());
 
         }
-        
+
 	}
 
     triggerActive(){
         console.log('triggerActive');
         this.timer.kill();
         this.timer = null;
-        
+
         this.setState({active: true});
         this.tlDisplayVideo.play();
         // this.playVideo();
@@ -242,7 +242,7 @@ class WorkItem extends Component {
 	}
 
     triggerUnactive() {
-        
+
         this.timer.kill();
         this.timer = null;
         this.setState({active: false});
@@ -261,11 +261,11 @@ class WorkItem extends Component {
     //         //this.timer = TweenMax.delayedCall( .3, () => this.triggerMouseEnter());
 
     //     }
-        
+
 	// }
 
     // triggerMouseEnter(){
-        
+
     //     this.timer.kill();
     //     this.timer = null;
 
@@ -279,7 +279,7 @@ class WorkItem extends Component {
     //     this.playVideo();
 
     // }
-    
+
 	// onMouseLeaveHandler() {
 
     //     if(this.timer){
@@ -294,7 +294,7 @@ class WorkItem extends Component {
 	// }
 
     // triggerMouseLeave() {
-        
+
     //     this.timer.kill();
     //     this.timer = null;
 
@@ -326,7 +326,7 @@ class WorkItem extends Component {
 		}
 
     }
-    
+
 
     onVideoCanPlay(){
 
@@ -336,8 +336,8 @@ class WorkItem extends Component {
 
     }
     pauseVideo(){
-        
-        console.log('pauseVideo'); 
+
+        console.log('pauseVideo');
         this.setState({playing: false});
 
     }
@@ -352,7 +352,7 @@ class WorkItem extends Component {
 
     resize(){
 
-		console.log('resize Video', this.halfHeight);        
+		console.log('resize Video', this.halfHeight);
         // this.setupDom();
 
         const factorIn = .75;
@@ -367,7 +367,7 @@ class WorkItem extends Component {
     }
 
     onVideoEnter() {
-        
+
         if(this.infoDisplayedCompleted){
             TweenMax.to(this.refs.maskLeft, .8, {x:'-15%', ease: Power1.easeInOut},0)
             TweenMax.to(this.refs.maskRight, .8, {x:'15%', ease: Power1.easeInOut},0)
@@ -387,17 +387,22 @@ class WorkItem extends Component {
         }
     }
 
+    createMarkup() {
+        const description = (this.props.data) ? this.props.data.description : '';
+        return {__html: description};
+    }
+
 	render() {
-        
+
         const {data} = this.props;
         const className = "work-item grid__col-" + data.col + (this.state.isHovered ? ' isHovered' : '');
         const {
-            url, playing, preload, loop, progressPercent
+            playing, preload, loop, progressPercent
         } = this.state;
-        
+
         const percentGrid = Math.round(100 / 12 * 100) / 100;
         // console.log('progressPercent', progressPercent);
-                    
+
         const style = {
             marginRight: data.offsetRight * percentGrid + '%',
             marginLeft: data.offsetLeft * percentGrid + '%'
@@ -415,14 +420,14 @@ class WorkItem extends Component {
 
                     <p className="season">{data.season}</p>
                     <div ref="workAsset" className="work-asset">
-                        
+
                         <div className="title-back"><h2>{data.symbol}</h2></div>
                         <div ref="wrapper" className="work-asset_wrapper" onClick={() => this.hideInfos()}>
                             <ProgressBar parentWidth={this.workAssetwidth} parentHeight={this.workAssetHeight} playing={playing} progress={progressPercent}/>
                             <ReactPlayer
                                 ref={(player => { this.player = player })}
                                 className='video-player'
-                                url={url}
+                                url={data.videoSourceMP4}
                                 playing={playing}
                                 preload={preload}
                                 loop={loop}
@@ -436,15 +441,13 @@ class WorkItem extends Component {
                             <div ref="maskTop" className="work-mask top"></div>
                             <div ref="maskBottom" className="work-mask bottom"></div>
                             <div ref="maskClickArea" className="work-mask_click"
-                                onMouseEnter = {() => this.onVideoEnter() }
-                                onMouseLeave = {() => this.onVideoLeave() }
+                                onMouseEnter={() => this.onVideoEnter() }
+                                onMouseLeave={() => this.onVideoLeave() }
                             ></div>
                         </div>
                         <div ref="infos" className="work-infos grid__col-6">
                             <div className="work-infos_wrapper">
-                                <p className="infos-description stagger">
-                                    {data.description}
-                                </p>
+                                <p className="infos-description stagger" dangerouslySetInnerHTML={this.createMarkup()}></p>
                                 <ul>
                                     {data.agency &&
                                         <li className="stagger">

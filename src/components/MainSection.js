@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Intro from './Intro/Intro.js'
+import IntroMotion from './IntroMotion/IntroMotion.js'
 import FeaturedProjects from './FeaturedProjects/FeaturedProjects.js'
 import Works from './Works/Works.js'
 // import WorkFocus from './Works/WorkFocus.js'
@@ -18,6 +19,10 @@ class MainSection extends Component {
 		viewport: PropTypes.object,
 		actions: PropTypes.object.isRequired
 	}
+
+	// constructor(props){
+	// 	super(props);
+	// }
 
 	componentDidMount () {
 
@@ -88,6 +93,7 @@ class MainSection extends Component {
 	}
 
 	onResize() {
+		console.log('onResize MainSection -----');
 
 		const width = this.getWidth();
 		const height = this.getHeight();
@@ -118,6 +124,7 @@ class MainSection extends Component {
 
 	render() {
 		return <div className="page-wrapper" ref="el">
+			<IntroMotion />
 			<Intro />
 			<FeaturedProjects viewport={this.props.viewport} />
 			<Works ref="works" actions={this.props.actions}/>

@@ -10,7 +10,7 @@
   flex-direction: column;
   // margin-left: 8.3%;
   margin-bottom: 130px;
-  
+
 }
 
 .face__wrapper{
@@ -25,16 +25,18 @@
 .title{
   font-family: 'GTSectraDisplay-Regular';
 	color: white;
-	@mixin fontSize 42, 1366;
+  font-size: 50px;
 	font-weight:  400;
 	letter-spacing: 0.04em;
 	text-align: center;
 	margin-top: 130px;
-  margin-bottom: 130px;
+  margin-bottom: 80px;
 }
 
 .links__list{
   padding-left: 0px;
+  margin-left: 25%;
+  margin-top: 20px;
 }
 .link{
   font-family: 'Akkurat Pro';
@@ -44,17 +46,20 @@
   line-height: 18px;
   text-align: left;
   text-decoration: none;
-  display: block;
+  display: inline-block;
   margin-bottom: 2px;
-  margin-left: 25%;
+  margin-right: 30px;
+  opacity: 1;
+}
+.about__link{
+  margin: 0px;
 }
 
 .about__wrapper{
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   display: flex;
   flex-direction: row;
-  // justify-content: flex-start;
   position: relative;
 }
 
@@ -62,7 +67,7 @@
   font-family: 'Maison Neue Mono';
 	color: white;
 	font-size: 12px;
-  line-height: 18px;
+  line-height: 20px;
   width: 25%;
   display: block;
   text-align: left;
@@ -75,10 +80,20 @@
   color: white;
   opacity: .5;
 	font-size: 13px;
-  line-height: 18px;
+  line-height: 20px;
   margin-bottom: 10px;
   width: 75%;
   text-align: left;
+}
+
+.about__dl__nested{
+  opacity: 1;
+  span{
+    opacity: .5;
+  }
+  a{
+    opacity: 1;
+  }
 }
 
 .image__background {
@@ -86,7 +101,7 @@
   width: 130px;
   height: auto;
   position: absolute;
-  right: -60px;
-  bottom: -50px;
+  right: -70px;
+  bottom: -80px;
 
 }

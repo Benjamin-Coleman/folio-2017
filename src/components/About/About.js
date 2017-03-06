@@ -5,6 +5,7 @@ import GlobalStore from '../../base/globalStore';
 import {getPositionStart} from '../../helpers/offset.js';
 import {getPositionEnd} from '../../helpers/offset.js';
 
+
 class About extends Component {
 	constructor(props) {
 		super(props);
@@ -18,14 +19,14 @@ class About extends Component {
 	}
 
 	componentDidMount() {
-		  
+
 		this.bindEvents();
 
 	}
 
 
 	bindEvents(){
-	
+
 		GlobalStore.on('change:viewport', () => this.resize());
 		GlobalStore.on('change:scroll', () => this.scrollUpdate());
 
@@ -39,7 +40,7 @@ class About extends Component {
 
 		// If we are before/after the first/`last frame, set the styles according first/last value.
 		// if(before || after) {
-        
+
         if(before || after) {
 
             // we are at firt or last and allready setStyle to reach initial/final Value
@@ -82,15 +83,7 @@ class About extends Component {
 					</div>
 					<div  className={styles.about__wrapper}>
 						<h3 className={styles.about__dt}>Job</h3>
-						<p className={styles.about__dl}>Currently working with good people and pushing pixels at <a href="https://www.stinkstudios.com" target="_blank">Stink Studios.</a></p>
-					</div>
-					<div  className={styles.about__wrapper}>
-						<h3 className={styles.about__dt}>Education</h3>
-						<p className={styles.about__dl}>Master degree in CS (Design, HCI, Engineering) from HETIC</p>
-					</div>
-					<div  className={styles.about__wrapper}>
-						<h3 className={styles.about__dt}>Location</h3>
-						<p className={styles.about__dl}>Currently based in Brooklyn USA originally from France.</p>
+						<p className={styles.about__dl +' '+ styles.about__dl__nested}><span>Currently working with good people and pushing pixels at </span><a className={styles.link +' '+ styles.about__link} href="https://www.stinkstudios.com" target="_blank">Stink Studios</a><span> in beautiful Brooklyn NY</span></p>
 					</div>
 					<div  className={styles.about__wrapper}>
 						<h3 className={styles.about__dt}>Skills</h3>
@@ -121,10 +114,10 @@ class About extends Component {
     resize(){
 
 		console.log('about resize');
-		
+
         this.top = getPositionStart(this.refs.el, GlobalStore.get('viewport').height);
         this.bottom = getPositionEnd(this.refs.el, GlobalStore.get('viewport').height);
-        
+
     }
 
 }

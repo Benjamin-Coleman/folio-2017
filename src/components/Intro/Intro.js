@@ -48,7 +48,7 @@ class Intro extends Component {
         this.title.innerHTML = spannedText;
 
         setTimeout(() => {
-            this.setupLetterScene();
+            // this.setupLetterScene();
         }, 1000);
 
         MorphSVGPlugin.convertToPath('.shape');
@@ -583,47 +583,22 @@ class Intro extends Component {
         const letterSvgMouthUp = styles.smile_svg + " smile_up shape";
         const letterSvgMouthDown = styles.smile_svg + " smile_down shape";
 
-        return ( 
+        return (
             <div className = { classNameGrid }ref = "el" >
 
                 <div className = { styles.logo } >
-                    <svg className = { styles.logo_svg }version = "1.1"
-                        id = "logo"
-                        x = "0px"
-                        y = "0px"
-                        viewBox = "0 0 102 102" >
-                        <circle className = { backgroundSvg }
-                        cx = "51"
-                        cy = "51"
-                        r = "48.5" / >
-                        <polygon className = { letterSvgT }
-                        points = "34.3,37 40.9,37 40.9,38.4 38.4,38.4 38.4,45.5 36.8,45.5 36.8,38.4 34.3,38.4 " />
-                        <rect x = "52.4"
-                        y = "68"
-                        className = { letterSvgI }
-                        width = "1.6"
-                        height = "8.5" / >
-                        <polygon className = { letterSvgM }
-            points = "71.2,45.5 73.2,45.5 75.5,51.5 77.7,45.5 79.7,45.5 79.7,54 78.2,54 78.2,47.9 76,53.9 74.8,53.9
-72.7, 47.9 72.7, 54 71.2, 54 "/> 
-                        <circle className = { letterSvgEye1 }
-                        cx = "27.7"
-                        cy = "46.5"
-                        r = "5.7" / >
-                        <circle className = { letterSvgEye2 }
-                        cx = "74.5"
-                        cy = "46.5"
-                        r = "5.7" / >
-                        <rect x = "36.8"
-                        y = "70.6"
-                        className = { letterSvgMouth }
-                        width = "28.7"
-                        height = "9" / >
-                        <path className = { letterSvgMouthUp }
-                        d = "M50.4,82.8c-9.8,0-17.7-8-17.7-17.7h9c0,4.8,3.9,8.7,8.7,8.7s8.7-3.9,8.7-8.7h9C68.1,74.9,60.2,82.8,50.4,82.8z" />
-                        <path className = { letterSvgMouthDown }
-                        d = "M50.4,74c9.8,0,17.7,8,17.7,17.7h-9c0-4.8-3.9-8.7-8.7-8.7s-8.7,3.9-8.7,8.7h-9C32.7,81.9,40.6,74,50.4,74z" />
-                    </svg> 
+                    <svg className = { styles.logo_svg }version="1.1" id="logo"x="0px"y="0px" viewBox="0 0 102 102" >
+                        <circle className={ backgroundSvg } cx="51" cy="51" r="48.5" / >
+                        <polygon className={ letterSvgT } points="34.3,37 40.9,37 40.9,38.4 38.4,38.4 38.4,45.5 36.8,45.5 36.8,38.4 34.3,38.4 " />
+                        <rect x="52.4" y="68" className={ letterSvgI } width="1.6"  height="8.5" / >
+                        <polygon className={ letterSvgM } points="71.2,45.5 73.2,45.5 75.5,51.5 77.7,45.5 79.7,45.5 79.7,54 78.2,54 78.2,47.9 76,53.9 74.8,53.9
+72.7, 47.9 72.7, 54 71.2, 54 "/>
+                        <circle className={ letterSvgEye1 } cx="27.7" cy="46.5" r="5.7" / >
+                        <circle className={ letterSvgEye2 } cx="74.5" cy="46.5" r="5.7" / >
+                        <rect x="36.8" y="70.6" className={ letterSvgMouth } width="28.7" height="9" / >
+                        <path className={ letterSvgMouthUp } d="M50.4,82.8c-9.8,0-17.7-8-17.7-17.7h9c0,4.8,3.9,8.7,8.7,8.7s8.7-3.9,8.7-8.7h9C68.1,74.9,60.2,82.8,50.4,82.8z" />
+                        <path className={ letterSvgMouthDown } d="M50.4,74c9.8,0,17.7,8,17.7,17.7h-9c0-4.8-3.9-8.7-8.7-8.7s-8.7,3.9-8.7,8.7h-9C32.7,81.9,40.6,74,50.4,74z" />
+                    </svg>
                 </div>
 
             <nav className = { classNavigation }
@@ -633,30 +608,29 @@ class Intro extends Component {
             <p ref = "contact_label"
             onMouseEnter = {() => this.onContactEnter() }
             className = { styles.navigation__p } > { mailText } </p>
-                
+
                 <a ref = "contact_copy"
                 className = { styles.navigation__link }
                 data-clipboard-action = "copy"
                 data-clipboard-text = "timothee.roussilhe@gmail.com"
-                target = "_blank" > Copy my email address </a> 
+                target = "_blank" > Copy my email address </a>
 
                 <span ref = "contact_or"
                 className = { styles.contact_or } > or </span>
-                
+
                 <a ref = "contact_link"
                 className = { styles.navigation__link }
                 href = "mailto:timothee.roussilhe@gmail.com"
                 target = "_blank"> Open your email
-                default app < br/> (you know the thing called "email") </a> 
-            
+                default app < br/> (you know the thing called "email") </a>
+
             </nav>
 
-            <div className = { styles.content__wrapper } >
+            <div className={ styles.content__wrapper } >
 
-                <h1 ref = "mainTitle" className = { styles.title } > Timothée Roussilhe </h1> 
-                <h2 className = { styles.subtitle } > Creative Developer </h2> 
-                <div ref = "stage" className = { styles.stage } > </div> 
-            
+                <h1 ref="mainTitle" className={ styles.title } >Timothée Roussilhe</h1>
+                <h2 className={ styles.subtitle } >Creative Developer</h2>
+                <div ref="stage" className={ styles.stage } > </div>
 
                 { /*<button ref="button" className={styles.explosion_button} ></button>*/ } {
                     /*<div className={classDescription__wrapper}>
@@ -674,25 +648,25 @@ class Intro extends Component {
 
             </div>
 
-            <div ref = "link"
-            onMouseEnter = {
+            <div ref="link"
+            onMouseEnter={
                 () => this.onLinkEnter() }
-            onMouseLeave = {
+            onMouseLeave={
                 () => this.onLinkLeave() }
-            className = { classLinkWrapper } >
-                <span ref = "link_icon"
-                className = { styles.link_icon } > ☠ </span> 
-                <a className = { styles.link }
-                onClick = {
+            className={ classLinkWrapper } >
+                <span ref="link_icon"
+                className={ styles.link_icon } > ☠ </span>
+                <a className={ styles.link }
+                onClick={
                     () => this.explosion() } >
-                    <span ref = "link_label"
-                    className = { styles.link_label } > Do not press this! </span> 
-                    <span ref = "link_underline_bottom"
-                    className = { styles.link_underline_bottom } > </span>
-                    <span ref = "link_underline"
-                    className = { styles.link_underline } > </span>
+                    <span ref="link_label"
+                    className={ styles.link_label } > Do not press this! </span>
+                    <span ref="link_underline_bottom"
+                    className={ styles.link_underline_bottom } > </span>
+                    <span ref="link_underline"
+                    className={ styles.link_underline } > </span>
                 </a>
-                </div>    
+                </div>
             </div>
         );
     }

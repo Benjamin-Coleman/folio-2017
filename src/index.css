@@ -31,6 +31,44 @@ body {
 	display: inline-block;
 }
 
+.Typist{
+	font-family: 'Akkurat Light Pro';
+	font-weight:  200;
+	color: #333;
+	/*font-family: 'GTSectraDisplay-Regular';*/
+	font-size: 18px;
+	font-weight:  400;
+	letter-spacing: 0.02em;
+	text-align: center;
+	user-select: none;
+}
+.Typist .Cursor--blinking {
+  opacity: 1;
+  animation: blink 1s linear infinite; }
+
+@keyframes blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
 /**{
 	border: 1px solid red;
 }*/
+
+.circle-letter{
+	position: absolute;
+	width: 20px;
+	left: 0;
+	top: 0;
+	transform-origin: bottom center;
+	height: 90px;
+    left: 50%;
+    margin-left: -10px;
+    top: -10px;
+	text-transform: uppercase;
+	font-family: 'Akkurat Pro';
+	font-weight: 400;
+}

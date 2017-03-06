@@ -4,14 +4,14 @@ import React, { Component } from 'react';
 import {TweenMax} from 'gsap';
 import styles from './FishVideo.module.css';
 
-var PIXI = require('pixi.js');
 import Stats from '@jordandelcros/stats-js';
 import GlobalStore from '../../base/globalStore';
 import {getPositionStart} from '../../helpers/offset.js';
 import {getPositionEnd} from '../../helpers/offset.js';
 import Smooth from '../../vendors/smooth';
 
-import filters from 'pixi-filters';
+import * as PIXI from 'pixi.js';
+// import filters from 'pixi-filters';
 
 // var filters = {
 //     DistortFilter: require('./Filter/crosshatch/CrossHatchFilter'),
@@ -268,7 +268,7 @@ class FishVideo extends Component {
 
         // this.ShockwaveFilter = new filtersTest.ShockwaveFilter();
 
-        this.DotFilter = new filters.DotFilter();
+        this.DotFilter = new customFilters.DotFilter();
         this.distortFilter = new customFilters.DistortFilter();
 
         this.distortFilter.time = 0;
@@ -323,12 +323,12 @@ class FishVideo extends Component {
         // this.BloomFilter = new filters.BloomFilter();
         // this.container.filters = [this.BloomFilter];
 
-        this.TiltShiftFilter = new filters.TiltShiftFilter();
+        // this.TiltShiftFilter = new filters.TiltShiftFilter();
 
-        this.BloomFilter = new filters.BloomFilter();
-        this.BloomFilter.blur = 1;
+        // this.BloomFilter = new filters.BloomFilter();
+        // this.BloomFilter.blur = 1;
 
-        this.TwistFilter = new filters.TwistFilter();
+        // this.TwistFilter = new filters.TwistFilter();
         this.TwistFilter.radius = 300;
         this.TwistFilter.angle = 5;
         this.TwistFilter.offset = new PIXI.Point(window.innerWidth / 2, window.innerHeight / 2);
@@ -337,7 +337,7 @@ class FishVideo extends Component {
 
         TweenMax.to(this.TwistFilter.offset, 10, {yoyo: -1, x: 800, y: 400});
 
-        this.ShockwaveFilter = new filters.ShockwaveFilter();
+        // this.ShockwaveFilter = new filters.ShockwaveFilter();
         this.ShockwaveFilter.time = 0;
         this.ShockwaveFilter.center = [0.5,0.5];
 
@@ -373,8 +373,6 @@ class FishVideo extends Component {
 
 		// If we are before/after the first/`last frame, set the styles according first/last value.
 		// if(before || after) {
-        console.log('scrollUpdate');
-
         if(before) {
 
             // we are at firt or last and allready setStyle to reach initial/final Value
