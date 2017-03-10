@@ -1,3 +1,5 @@
+@import './../../base/utils/media-queries.css';
+
 .introduction {
 
 	min-height: 100vh;
@@ -7,6 +9,7 @@
 	background-color:#AFAFAF;
 	position: relative;
 	display: flex;
+
 }
 
 .logo{
@@ -18,29 +21,31 @@
 	cursor: pointer;
 	user-select: none;
 
-	.background_svg{
+	/*.background_svg{
 		transition: all 1s ease-out;
 	}
+
 	&:hover{
 		.background_svg{
 			stroke-width: 5;
 		}
-	}
+	}*/
 
 }
 
-.logo_svg{
+.logo_svg {
+
 	width: 102px;
 	height: 102px;
 
-	.background_svg{
+	/*.background_svg{
 		transition: all 1s ease-out;
 	}
 	&:hover{
 		.background_svg{
 			stroke-width: 5;
 		}
-	}
+	}*/
 }
 
 .logo_svg:hover{
@@ -65,6 +70,11 @@
 	width: auto;
 	user-select: none;
 	display: flex;
+
+	@media (--phone) {
+		bottom: 50px;
+		display: none;
+	}
 }
 
 .link{
@@ -153,9 +163,18 @@
     height: 100%;
 	top: calc(50% - 100px);
 	left: 0;
+
+	@media (--phone) {
+		/* styles for small viewport */
+		font-size: 40px;
+		line-height: 42px;
+		top: calc(50% - 40px);
+	}
+
 }
 
-.subtitle{
+.subtitle {
+
 	font-family: 'Akkurat Light Pro';
 	font-weight:  200;
 	color: #5D5D5D;
@@ -167,6 +186,10 @@
 	text-align: center;
 	margin-top: 100px;
 	user-select: none;
+
+	@media (--phone) {
+		font-size: 18px;
+	}
 }
 
 .stage {
@@ -232,8 +255,21 @@
 	right: 40px;
 	overflow: hidden;
 	z-index: 3;
-}
 
+	@media (--phone) {
+		display: none;
+	}
+}
+.mobile__nav{
+
+	right: 20px;
+	top: 60px;
+	display: none;
+	@media (--phone) {
+		display: block;
+	}
+
+}
 .navigation__p{
   	font-family: 'Akkurat Pro';
   	font-weight:  700;

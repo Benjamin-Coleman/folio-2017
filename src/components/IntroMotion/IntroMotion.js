@@ -105,7 +105,7 @@ class Intro extends Component {
         this.tlIntro = new TimelineMax({
 			paused: true,
 			onComplete: () => {
-
+                this.onIntroHidden();
 			}
 		});
 
@@ -149,7 +149,6 @@ class Intro extends Component {
 
         let randomLetters = shuffleArray([].slice.call(letters));
         const length = Math.floor(randomLetters.length / 3);
-        console.log('length', length);
 
         let randomLettersThirdOne = randomLetters.splice(0, length + 1);
         let randomLettersThirdTwo = randomLetters.splice(0, length);
@@ -160,60 +159,61 @@ class Intro extends Component {
         console.log('randomLettersThirdThree', randomLettersThirdThree);
 
         let faceElements = this.refs.mainSvg.querySelectorAll('.shape_face');
-        console.log('faceElements', faceElements);
 
         const initialDelay = 2;
 
 		this.tlIntro
-			.to(this.refs.circle, 2,
-				{strokeDashoffset: 0 , ease: Expo.easeOut}, initialDelay + 2)
+			.to(this.refs.circle, 1,
+				{strokeDashoffset: 0 , ease: Expo.easeOut}, initialDelay )
             .to(this.refs.type, 3,
-				{rotation: 40, transformOrigin: '50% 51%', force3D:true}, initialDelay + 4)
+				{rotation: 40, transformOrigin: '50% 51%', force3D:true}, initialDelay + 1.5)
 
 
             .fromTo(this.refs.circleText, .1,
 				{opacity: 0},
-				{opacity: 1, ease: Expo.easeOut}, initialDelay + 6)
+				{opacity: 1, ease: Expo.easeOut}, initialDelay + 4)
 
             .to(this.refs.circle, .1,
-				{opacity: 0}, initialDelay + 6)
+				{opacity: 0}, initialDelay + 4)
             .to(this.refs.type, .1,
-				{opacity: 0}, initialDelay + 6)
+				{opacity: 0}, initialDelay + 4)
 
             .to(this.refs.circleText, .1,
-				{opacity: 0, ease: Expo.easeOut}, initialDelay + 6.15)
+				{opacity: 0, ease: Expo.easeOut}, initialDelay + 4.15)
             .to(this.refs.circleText, .1,
-				{opacity: 1, ease: Expo.easeOut}, initialDelay + 6.3)
+				{opacity: 1, ease: Expo.easeOut}, initialDelay + 4.3)
 
             .to(this.refs.circleText, 3,
-				{rotation: -40, transformOrigin: '80px 80px', force3D:true}, initialDelay + 6)
+				{rotation: -40, transformOrigin: '80px 80px', force3D:true}, initialDelay + 4)
 
+            .to(this.refs.circleText, .1,
+				{opacity: 0}, initialDelay + 7)
 
-            // .to(this.refs.circleText, .1,
-			// 	{opacity: 0}, initialDelay + 7)
-
-            // //FACE
+            //FACE
             .fromTo(faceElements, 1,
                 {opacity: 0},
                 {opacity: 1, ease: Expo.easeOut}, initialDelay + 7.1)
 
-            // .to(this.refs.circleText, .1,
-			// 	{opacity: 1}, initialDelay + 8)
+            .to(this.refs.circleText, .1,
+				{opacity: 1}, initialDelay + 8)
 
             .fromTo(randomLettersThirdOne, .3,
-				{y: 100, opacity: 0},
-				{y: 0, opacity: 1, ease: Expo.easeOut}, initialDelay + 8)
+				{y: 100, skewY: 30, opacity: 0},
+				{y: 0, skewY: 0, opacity: 1, ease: Power2.easeOut}, initialDelay + 5)
             .fromTo(randomLettersThirdTwo, .3,
-				{y: -100, opacity: 0},
-				{y: 0, opacity: 1, ease: Expo.easeOut}, initialDelay + 8.5)
+				{y: -100, skewY: -30, opacity: 0},
+				{y: 0, skewY: 0, opacity: 1, ease: Power2.easeOut}, initialDelay + 5.5)
             .fromTo(randomLettersThirdThree, .3,
-				{y: 100, opacity: 0},
-				{y: 0, opacity: 1, ease: Expo.easeOut}, initialDelay + 9)
+				{y: 100, skewY: 30, opacity: 0},
+				{y: 0, skewY: 0, opacity: 1, ease: Power2.easeOut}, initialDelay + 6)
 
     }
 
     onIntroHidden() {
+
         this.unBindLethargyEvents();
+        this.setState({ introShown: true });
+
         TweenLite.to(this.refs.el, 1, { ease: Power2.easeOut, clip:"rect(0px "+ GlobalStore.get('viewport').width +" 0px 0px)"
             , onComplete: () => {
                 // put scroll back on
@@ -275,9 +275,7 @@ class Intro extends Component {
     resize() {
 
         if (!this.state.introShown) {
-
             TweenLite.set(this.refs.el, {clip:"rect(0px "+ GlobalStore.get('viewport').width +" "+ GlobalStore.get('viewport').height + "px "+  +" 0px)", paused:true});
-
         }
 
     }
@@ -285,20 +283,22 @@ class Intro extends Component {
     render() {
 
         const backgroundSvg = styles.background_svg + " background_s";
-        const letterSvgT = styles.letter_svg + " letter t shape";
-        const letterSvgI = styles.letter_svg + " letter i shape";
-        const letterSvgM = styles.letter_svg + " letter m shape";
-        const letterSvgEye1 = styles.eyes_svg + " eyes eye01 shape shape_face";
-        const letterSvgEye2 = styles.eyes_svg + " eyes eye02 shape shape_face";
-        const letterSvgMouth = styles.mouth_svg + " mouth shape shape_face";
-        const letterSvgMouthUp = styles.smile_svg + " smile_up shape";
-        const letterSvgMouthDown = styles.smile_svg + " smile_down shape";
+        const letterSvgT = styles.letter_svg + " letter t ";
+        const letterSvgI = styles.letter_svg + " letter i ";
+        const letterSvgM = styles.letter_svg + " letter m ";
+        const letterSvgEye1 = styles.eyes_svg + " eyes eye01 shape_face";
+        const letterSvgEye2 = styles.eyes_svg + " eyes eye02 shape_face";
+        const letterSvgMouth = styles.mouth_svg + " mouth shape_face";
+        const letterSvgMouthUp = styles.smile_svg + " smile_up";
+        const letterSvgMouthDown = styles.smile_svg + " smile_down";
+
+        const title = GlobalStore.config.isMobile ? 'Tim Roussilhe' : 'Timothée Roussilhe'
 
         return (
 
             <div className={ styles.introduction__motion } ref="el">
 
-                <h1 ref="mainTitle" className={ styles.title } >Timothée Roussilhe </h1>
+                <h1 ref="mainTitle" className={ styles.title } >{title}</h1>
                 {/*<h2 className={ styles.subtitle } >Creative Developer </h2>*/}
 
                 <div className={ styles.circle_wrapper } ref="circle_wrapper">

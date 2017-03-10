@@ -22,12 +22,14 @@ function DistortFilter()
         {
             res: { type: 'v2', value: { x: 0, y: 0 } },
             time: { type: '1f', value: 0 },
+            amplitude: { type: '1f', value: 10.0 },
             noiseTexture: {type: 'sampler2D', value: null}
         }
     );
 
     this.res = [1366, 765];
     this.time = 0;
+    this.amplitude = 10.0;
     this.noiseTexture = null;
 }
 
@@ -68,6 +70,23 @@ Object.defineProperties(DistortFilter.prototype, {
         set: function (value)
         {
             this.uniforms.time = value;
+        }
+    },
+    /**
+     * Sets the elapsed time of the shockwave. This controls the speed at which
+     * the shockwave ripples out.
+     *
+     * @member {number}
+     * @memberof PIXI.filters.DistortFilter#
+     */
+    amplitude: {
+        get: function ()
+        {
+            return this.uniforms.amplitude;
+        },
+        set: function (value)
+        {
+            this.uniforms.amplitude = value;
         }
     },
     /**

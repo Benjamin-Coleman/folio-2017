@@ -13,7 +13,6 @@ import WorkItem from '../WorkItem/WorkItem';
 import { TimelineMax } from 'gsap';
 import { TweenMax } from 'gsap';
 
-
 //Redux
 import { setProjectActive } from '../../actions';
 
@@ -28,6 +27,7 @@ class Works extends Component {
 
 		this.data = data;
 		this.edge = 0;
+		this.right = GlobalStore.config.isMobile ? 0 : 11;
 
 	}
 
@@ -68,64 +68,6 @@ class Works extends Component {
 		this.smooth.addElement(element);
 		this.smooth.start();
 
-		console.log('this.props', this.props);
-
-		// this.smooth = new Smooth({smoothContainer: false});
-		// this.smoothElements = [];
-		// this.smooth.init();
-
-		// let element = {
-		// 	el : this.refs.work09.refs.workItem,
-		// 	animations : [
-		// 		{
-		// 			transform : [
-
-		// 				{
-		// 					start : 'in-viewport',
-		// 					end : 'out-viewport',
-		// 					initialValue : 0,
-		// 					finalValue : 600,
-		// 					transformType : 'translate3d',
-		// 					axis : 'y',
-		// 					ease : 0.1
-		// 				}
-		// 			]
-
-		// 		}
-		// 	]
-		// };
-
-		// var body = document.body,
-		// html = document.documentElement;
-
-		// const height = Math.max( body.scrollHeight, body.offsetHeight, 
-		// 	html.clientHeight, html.scrollHeight, html.offsetHeight );
-
-		// let elementFocus = {
-		// 	el : this.refs.workFocus,
-		// 	animations : [
-		// 		{
-		// 			transform : [
-
-		// 				{
-		// 					start : 0,
-		// 					end : height,
-		// 					initialValue : 0,
-		// 					finalValue : height,
-		// 					transformType : 'translate3d',
-		// 					axis : 'y',
-		// 					ease : 0.05
-		// 				}
-		// 			]
-
-		// 		}
-		// 	]
-		// };
-
-		// this.smooth.addElement(element);
-		// this.smooth.addElement(elementFocus);
-		// this.smooth.start();
-
 		this.setupDom();
 
 	}
@@ -159,7 +101,7 @@ class Works extends Component {
 				this.setState({ active: false });
 				this.refs.sidebar.style.position = 'absolute';
 				this.refs.sidebar.style.top = (this.edge === -1) ? '0px' : this.refs.el.offsetHeight - GlobalStore.get('viewport').height + 'px';
-				this.refs.sidebar.style.right = '11px';
+				this.refs.sidebar.style.right = this.right + 'px';
 
 			}
 
@@ -172,7 +114,7 @@ class Works extends Component {
 				this.refs.sidebar.style.position = 'fixed';
 				this.refs.sidebar.style.top = '0px';
 				console.log('GlobalStore.get().width', GlobalStore.get('viewport').width);
-				
+
 				let right = 0;
 				if(GlobalStore.get('viewport').width >= 1366){
 					right = GlobalStore.get('viewport').width - this.refs.wrapper.getBoundingClientRect().right;
@@ -180,8 +122,8 @@ class Works extends Component {
 					right = 0;
 				}
 
-				this.refs.sidebar.style.right = 11 + right + 'px';
-				
+				this.refs.sidebar.style.right = this.right + right + 'px';
+
 			}
 		}
 
@@ -189,14 +131,11 @@ class Works extends Component {
 
 
 	componentDidUpdate(prevProps) {
-		console.log(' this.props', this.props);
 
 		if (prevProps.current_active_project !== this.props.current_active_project) {
-			console.log('active changed', this.props.current_active_project);
-			console.log('this.props.current_active_project', parseFloat(this.props.current_active_project));
 
 			let index = parseFloat(this.props.current_active_project) + 1;
-			const sidebar_height = 36;
+			const sidebar_height = GlobalStore.config.isMobile ? 24 : 36;
 
 			TweenMax.killTweensOf(this.refs.sidebar.querySelector('.digit'));
 			TweenMax.killTweensOf(this.refs.sidebar.querySelector('.single'));
@@ -204,15 +143,6 @@ class Works extends Component {
 			TweenMax.to(this.refs.sidebar.querySelector('.digit'), 1, { y: -index * sidebar_height, ease: Power2.easeOut })
 			TweenMax.to(this.refs.sidebar.querySelector('.single'), 1, { y: -index * sidebar_height, ease: Power2.easeOut, delay: .1 })
 
-			// if(this.props.work.current_active_project !== null){
-			// 	this.onProjectHovered(this.props.work.current_active_project);
-			// } else {
-			// 	this.onProjectLeave(this.props.work.current_active_project);
-			// }
-
-			// this.setState((prevState) => ({
-			// 	isProjectHovered: !prevState.isProjectHovered
-			// }));
 		}
 	}
 
@@ -267,32 +197,45 @@ class Works extends Component {
 					let children = [];
 
 					for (let index = 0; index < work.children.length; index++) {
-						let element = work.children[index];						
-						
-						if (element.quote) {
-							children.push(
-								<div key={element.id} className="quote">
-									<h3>{element.quoteContent}</h3>
-								</div>
-							)
-						} else if (element.image) {
+						let element = work.children[index];
 
-							const style = {
-								marginRight: element.offsetRight * percentGrid + '%',
-								marginLeft: element.offsetLeft * percentGrid + '%'
-							};
-							const className = "image grid__col-" + element.col;
+						// Mobile ; we render only video item!
+						if(GlobalStore.config.isMobile){
 
-							children.push(
-								<div style={style} key={element.id} className={className}>
-									<img src={element.imageSource} role="presentation"/>
-								</div>
-							)
+							if (!element.quote && !element.image) {
+
+								children.push(<WorkItem ref={'work' + element.id} key={element.id} actions={this.props.actions} setProjectActive={this.props.setProjectActive} data={element}/> );
+							}
+
+						} else {
+
+							if (element.quote) {
+								children.push(
+									<div key={element.id} className="quote">
+										<h3>{element.quoteContent}</h3>
+									</div>
+								)
+							} else if (element.image) {
+
+								const style = {
+									marginRight: element.offsetRight * percentGrid + '%',
+									marginLeft: element.offsetLeft * percentGrid + '%'
+								};
+								const className = "image grid__col-" + element.col;
+
+								children.push(
+									<div style={style} key={element.id} className={className}>
+										<img src={element.imageSource} role="presentation"/>
+									</div>
+								)
+							}
+							else {
+								children.push(<WorkItem ref={'work' + element.id} key={element.id} actions={this.props.actions} setProjectActive={this.props.setProjectActive} data={element}/> );
+							}
+
 						}
-						 else {
-							children.push(<WorkItem ref={'work' + element.id} key={element.id} actions={this.props.actions} setProjectActive={this.props.setProjectActive} data={element}/> );	
-						}
-						
+
+
 					}
 
 					return (
@@ -300,6 +243,7 @@ class Works extends Component {
 							{children}
 						</div>
 					);
+
 
 				} else {
 					return <WorkItem setProjectActive={this.props.setProjectActive} ref={'work' + work.id} key={work.id} actions={this.props.actions} data={work} />
@@ -324,14 +268,14 @@ class Works extends Component {
 		const classNameSectionBackground = "section-background" + (this.state.isProjectHovered ? ' isProjectHovered' : '');
 		const classNameBackground = "background" + (this.state.isProjectHovered ? ' isProjectHovered' : '');
 
-		return ( 
+		return (
 		<section ref = "el"
 			className = "works-section" >
 			<div className="works-wrapper" ref="wrapper" >
-				<div className = "grid" > 
-					{ WorkItems } 
-				</div> 
-			</div> 
+				<div className = "grid" >
+					{ WorkItems }
+				</div>
+			</div>
 			<sidebar ref = "sidebar" >
 				<div className = "sidebar_wrapper" >
 					<div className = "sidebar_mask" >
@@ -347,7 +291,7 @@ class Works extends Component {
 							<span> 0 </span>
 							<span> 0 </span>
 							<span> 1 </span>
-						</div> 
+						</div>
 						<div className = "digit single" >
 							<span> 0 </span>
 							<span> 1 </span>
@@ -359,12 +303,12 @@ class Works extends Component {
 							<span> 7 </span>
 							<span> 8 </span>
 							<span> 9 </span>
-							
+
 							<span> 0 </span>
-						</div> 
-					</div> 
+						</div>
+					</div>
 					<span className = "divider" > /10</span >
-				</div> 
+				</div>
 			</sidebar>
 
 		</section>

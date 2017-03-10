@@ -20,8 +20,8 @@ class Face extends Component {
         this.speed = 0.1;
         this.leave = true;
 
-        this.width= 500;
-        this.height= 600;
+        this.width= GlobalStore.config.isMobile ? 250 : 500;
+        this.height= GlobalStore.config.isMobile ? 300 : 600;
 
         this.mouseX = this.width /2;
         this.mouseY = this.height /2;
@@ -29,7 +29,6 @@ class Face extends Component {
         this.timerBG = null;
 
     }
-
 
     componentDidMount() {
 
@@ -83,6 +82,10 @@ class Face extends Component {
         let texturePortrait = PIXI.loader.resources['/assets/images/portrait.jpg'].texture;
         this.portrait = new PIXI.Sprite(texturePortrait);
 
+        const scale = GlobalStore.config.isMobile ? .5 : 1;
+        this.portrait.scale.x = scale;
+        this.portrait.scale.y = scale;
+
         this.stage.addChildAt(this.portrait, 0);
 
         this.portrait.anchor.y = 1;
@@ -91,6 +94,8 @@ class Face extends Component {
         //background now
         this.createBackground();
         this.bindEvent();
+
+        this.renderer.render(this.stage);
 
     }
 
@@ -109,8 +114,11 @@ class Face extends Component {
 
 		this.stage.on('mousemove', this.handlers.mouseMoveHandler);
 		this.stage.on('mouseover', this.handlers.mouseEnterHandler);
-		// this.stage.on('mouseleave', this.handlers.mouseLeaveHandler);
 		this.stage.on('mouseout', this.handlers.mouseLeaveHandler);
+
+		this.stage.on('touchmove', this.handlers.mouseMoveHandler);
+        this.stage.on('touchstart', this.handlers.mouseEnterHandler);
+		this.stage.on('touchend', this.handlers.mouseLeaveHandler);
 
     }
 
@@ -118,6 +126,10 @@ class Face extends Component {
 
         var container = new PIXI.Container();
         var sprite = new PIXI.Sprite(texture);
+
+        const scale = GlobalStore.config.isMobile ? .5 : 1;
+        sprite.scale.x = scale;
+        sprite.scale.y = scale;
 
         sprite.position.x = this.width / 2 - sprite.width / 2 - 5;
         sprite.position.y = this.height / 2 - sprite.height / 2 + 10;

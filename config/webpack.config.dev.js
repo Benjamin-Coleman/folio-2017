@@ -1,3 +1,5 @@
+
+//POST CSS
 var autoprefixer = require('autoprefixer');
 var postcssImport = require('postcss-import');
 var postcssNested = require('postcss-nested');
@@ -5,12 +7,16 @@ var postcssFontPath = require('postcss-fontpath');
 var postcssReporter = require('postcss-reporter');
 var postcssSimpleVars = require('postcss-simple-vars');
 var postcssMixins = require('postcss-mixins');
+var postcssMinmax = require('postcss-media-minmax');
+var postcssCustomMedia = require("postcss-custom-media");
+
 var webpack = require('webpack');
 var findCacheDir = require('find-cache-dir');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+
 var getClientEnvironment = require('./env');
 var paths = require('./paths');
 
@@ -170,6 +176,8 @@ module.exports = {
 				mixins: cssMixins
 			}),
 			postcssFontPath(),
+			postcssCustomMedia(),
+			postcssMinmax(),
 			postcssSimpleVars({
 				variables: () => cssVars,
 				unknown: (node, name, result) => node.warn(result, 'Unknown CSS variable ', name),

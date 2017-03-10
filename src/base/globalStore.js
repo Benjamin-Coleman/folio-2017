@@ -1,4 +1,5 @@
-// Global store in addition of Redux, responsable on UI / Animation / mouse state when Redux is in charge of Application State. 
+// Global store in addition of Redux, responsable on UI / Animation / mouse state when Redux is in charge of Application State.
+import is from 'is_js';
 
 class GlobalStore {
 	constructor() {
@@ -16,6 +17,10 @@ class GlobalStore {
 				width: window.innerWidth,
 				height: window.innerHeight
 			}
+		}
+		// Object that are not going ot be modified neither need callback
+		this.config = {
+			isMobile: is.mobile()
 		}
 	}
 

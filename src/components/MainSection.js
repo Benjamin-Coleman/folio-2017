@@ -124,11 +124,15 @@ class MainSection extends Component {
 
 	render() {
 		return <div className="page-wrapper" ref="el">
-			<IntroMotion />
+
+			{!GlobalStore.config.isMobile &&
+				<IntroMotion />
+			}
 			<Intro />
-			<FeaturedProjects viewport={this.props.viewport} />
+			{!GlobalStore.config.isMobile &&
+				<FeaturedProjects viewport={this.props.viewport} />
+			}
 			<Works ref="works" actions={this.props.actions}/>
-			{/*<WorkFocus ref="worksFocus" />*/}
 			<About />
 			{/*<Photos /> */}
 			<FishVideo />

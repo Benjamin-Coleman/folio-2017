@@ -1,4 +1,4 @@
-/*global Power2 */
+/*global TimelineLite Power1 Power2 TweenLite Power3 Power4 */
 
 import React, { Component } from 'react';
 import {TweenMax} from 'gsap';
@@ -8,7 +8,7 @@ import Stats from '@jordandelcros/stats-js';
 import GlobalStore from '../../base/globalStore';
 import {getPositionStart} from '../../helpers/offset.js';
 import {getPositionEnd} from '../../helpers/offset.js';
-import Smooth from '../../vendors/smooth';
+// import Smooth from '../../vendors/smooth';
 
 import * as PIXI from 'pixi.js';
 // import filters from 'pixi-filters';
@@ -34,204 +34,290 @@ class FishVideo extends Component {
 
         this.edge = 0;
         this.active = false;
+
+        this.easedScroll = 0;
+		this.scroll = 0;
+		this.scrollY = 0;
+		this.animatedElmts = [];
+
+		this.documentHeight = -1;
+        this.windowHeight = 0;
     }
 
 	componentDidMount(){
 
         this.setupScene();
         this.resize();
+        this.setTimeLines();
 
-        this.smooth = new Smooth({ smoothContainer: false });
-		// this.smoothElements = [];
-		this.smooth.init();
+        // this.smooth = new Smooth({ smoothContainer: false });
+		// // this.smoothElements = [];
+		// this.smooth.init();
 
-        const heightRation = GlobalStore.get('viewport').height;
+        // const heightRation = GlobalStore.get('viewport').height;
+        // const thirdRatio = heightRation / 3;
 
-        const thirdRatio = heightRation / 3;
+		// let element = {
+		// 	el: this.refs.thanks01,
+		// 	animations: [{
+		// 		transform: [
 
-		let element = {
-			el: this.refs.thanks01,
-			animations: [{
-				transform: [
+		// 			{
+		// 				start: this.top,
+		// 				end: this.top + thirdRatio,
+		// 				initialValue: 300,
+		// 				finalValue: 0,
+		// 				transformType: 'translate3d',
+		// 				axis: 'y',
+		// 				ease: 0.1
+		// 			}
+		// 		]
 
-					{
-						start: this.top,
-						end: this.top + thirdRatio,
-						initialValue: 300,
-						finalValue: 0,
-						transformType: 'translate3d',
-						axis: 'y',
-						ease: 0.1
-					}
-				]
+		// 	},
+        //     {
+        //         start: this.top + thirdRatio * 5,
+		// 		end: this.top + thirdRatio * 6,
+        //         initialValue : 1,
+        //         finalValue : 0.05,
+        //         property : 'opacity',
+        //         ease : 0.1
+        //     },
+        //     {
+        //         start: this.top,
+		// 		end: this.top + thirdRatio,
+        //         initialValue : 0,
+        //         finalValue : 1,
+        //         property : 'opacity',
+        //         ease : 0.1
+        //     }
+        //     ]
+		// };
 
-			},
-            {
-                start: this.top + thirdRatio * 5,
-				end: this.top + thirdRatio * 6,
-                initialValue : 1,
-                finalValue : 0.05,
-                property : 'opacity',
-                ease : 0.1
-            },
-            {
-                start: this.top,
-				end: this.top + thirdRatio,
-                initialValue : 0,
-                finalValue : 1,
-                property : 'opacity',
-                ease : 0.1
-            }
-            ]
-		};
+		// let element02 = {
+		// 	el: this.refs.thanks02,
+		// 	animations: [{
+		// 		transform: [
 
-		let element02 = {
-			el: this.refs.thanks02,
-			animations: [{
-				transform: [
+		// 			{
+		// 				start: this.top + thirdRatio,
+		// 				end: this.top + thirdRatio * 2,
+		// 				initialValue: 300,
+		// 				finalValue: 0,
+		// 				transformType: 'translate3d',
+		// 				axis: 'y',
+		// 				ease: 0.1
+		// 			}
+		// 		]
 
-					{
-						start: this.top + thirdRatio,
-						end: this.top + thirdRatio * 2,
-						initialValue: 300,
-						finalValue: 0,
-						transformType: 'translate3d',
-						axis: 'y',
-						ease: 0.1
-					}
-				]
+		// 	},
+        //     {
+        //         start: this.top + thirdRatio * 5,
+		// 		end: this.top + thirdRatio * 6,
+        //         initialValue : 1,
+        //         finalValue : 0.05,
+        //         property : 'opacity',
+        //         ease : 0.1
+        //     },
+        //     {
+        //         start: this.top + thirdRatio,
+		// 		end: this.top + thirdRatio * 2,
+        //         initialValue : 0,
+        //         finalValue : 1,
+        //         property : 'opacity',
+        //         ease : 0.1
+        //     }
+        //     ]
+		// };
 
-			},
-            {
-                start: this.top + thirdRatio * 5,
-				end: this.top + thirdRatio * 6,
-                initialValue : 1,
-                finalValue : 0.05,
-                property : 'opacity',
-                ease : 0.1
-            },
-            {
-                start: this.top + thirdRatio,
-				end: this.top + thirdRatio * 2,
-                initialValue : 0,
-                finalValue : 1,
-                property : 'opacity',
-                ease : 0.1
-            }
-            ]
-		};
+		// let element03 = {
+		// 	el: this.refs.thanks03,
+		// 	animations: [{
+		// 		transform: [
 
-		let element03 = {
-			el: this.refs.thanks03,
-			animations: [{
-				transform: [
+		// 			{
+		// 				start: this.top + thirdRatio,
+		// 				end: this.top + thirdRatio * 3,
+		// 				initialValue: 300,
+		// 				finalValue: 0,
+		// 				transformType: 'translate3d',
+		// 				axis: 'y',
+		// 				ease: 0.1
+		// 			}
+		// 		]
+		// 	},
+        //     {
+        //         start: this.top + thirdRatio * 5,
+		// 		end: this.top + thirdRatio * 6,
+        //         initialValue : 1,
+        //         finalValue : 0.05,
+        //         property : 'opacity',
+        //         ease : 0.1
+        //     },
+        //     {
+        //         start: this.top + thirdRatio,
+		// 		end: this.top + thirdRatio * 3,
+        //         initialValue : 0,
+        //         finalValue : 1,
+        //         property : 'opacity',
+        //         ease : 0.1
+        //     }
+        //     ]
+		// };
 
-					{
-						start: this.top + thirdRatio,
-						end: this.top + thirdRatio * 3,
-						initialValue: 300,
-						finalValue: 0,
-						transformType: 'translate3d',
-						axis: 'y',
-						ease: 0.1
-					}
-				]
+        // let elementLuck = {
+		// 	el: this.refs.luck,
+		// 	animations: [
+        //         {
+		// 		transform: [
 
-			},
-            {
-                start: this.top + thirdRatio * 5,
-				end: this.top + thirdRatio * 6,
-                initialValue : 1,
-                finalValue : 0.05,
-                property : 'opacity',
-                ease : 0.1
-            },
-            {
-                start: this.top + thirdRatio,
-				end: this.top + thirdRatio * 3,
-                initialValue : 0,
-                finalValue : 1,
-                property : 'opacity',
-                ease : 0.1
-            }
-            ]
-		};
+		// 			{
+		// 				start: this.top + heightRation + thirdRatio,
+		// 				end: this.top + heightRation + thirdRatio * 2,
+		// 				initialValue: 300,
+		// 				finalValue: 0,
+		// 				transformType: 'translate3d',
+		// 				axis: 'x',
+		// 				ease: 0.1
+		// 			},
+        //             {
+		// 				start: this.top + heightRation + thirdRatio  * 6,
+		// 				end: this.top + heightRation + thirdRatio  * 9,
+		// 				initialValue: 0,
+		// 				finalValue: -600,
+		// 				transformType: 'translate3d',
+		// 				axis: 'y',
+		// 				ease: 0.1
+		// 			},
+        //             {
+		// 				start: this.top + heightRation + thirdRatio  * 6,
+		// 				end: this.top + heightRation + thirdRatio  * 12,
+		// 				initialValue: 0,
+		// 				finalValue: 720,
+		// 				transformType: 'rotate3d',
+        //                 axis: 'both',
+		// 				ease: 0.1
+		// 			}
+		// 		]
+
+		// 	},
+        //     {
+        //         start: this.top + heightRation + thirdRatio,
+		// 		end: this.top + heightRation + thirdRatio * 2,
+        //         initialValue : 0,
+        //         finalValue : 1,
+        //         property : 'opacity',
+        //         ease : 0.1
+        //     }
+        //     ]
+		// };
+        // let elementCanvas = {
+		// 	el: this.refs.canvasContainer,
+		// 	animations: [
+
+        //         {
+        //             start: this.top + heightRation * 2,
+        //             end: this.top + heightRation * 2 + thirdRatio,
+        //             initialValue : 0,
+        //             finalValue : 1,
+        //             property : 'opacity',
+        //             ease : 0.1
+        //         }
+        //     ]
+		// };
+
+		// this.smooth.addElement(element);
+		// this.smooth.addElement(element02);
+		// this.smooth.addElement(element03);
+		// this.smooth.addElement(elementLuck);
+		// this.smooth.addElement(elementCanvas);
+		// this.smooth.start();
 
 
-        let elementLuck = {
-			el: this.refs.luck,
-			animations: [
-                {
-				transform: [
 
-					{
-						start: this.top + heightRation + thirdRatio,
-						end: this.top + heightRation + thirdRatio * 2,
-						initialValue: 300,
-						finalValue: 0,
-						transformType: 'translate3d',
-						axis: 'x',
-						ease: 0.1
-					},
-                    {
-						start: this.top + heightRation + thirdRatio  * 6,
-						end: this.top + heightRation + thirdRatio  * 9,
-						initialValue: 0,
-						finalValue: -600,
-						transformType: 'translate3d',
-						axis: 'y',
-						ease: 0.1
-					},
-                    {
-						start: this.top + heightRation + thirdRatio  * 6,
-						end: this.top + heightRation + thirdRatio  * 12,
-						initialValue: 0,
-						finalValue: 720,
-						transformType: 'rotate3d',
-                        axis: 'both',
-						ease: 0.1
-					}
-				]
+	}
 
-			},
-            {
-                start: this.top + heightRation + thirdRatio,
-				end: this.top + heightRation + thirdRatio * 2,
-                initialValue : 0,
-                finalValue : 1,
-                property : 'opacity',
-                ease : 0.1
-            }
-            ]
-		};
-        let elementCanvas = {
-			el: this.refs.canvasContainer,
-			animations: [
+    setTimeLines() {
 
-                {
-                    start: this.top + heightRation * 2,
-                    end: this.top + heightRation * 2 + thirdRatio,
-                    initialValue : 0,
-                    finalValue : 1,
-                    property : 'opacity',
-                    ease : 0.1
-                }
-            ]
-		};
+		this.mainTL && delete this.mainTL;
 
-		this.smooth.addElement(element);
-		this.smooth.addElement(element02);
-		this.smooth.addElement(element03);
-		this.smooth.addElement(elementLuck);
-		this.smooth.addElement(elementCanvas);
-		this.smooth.start();
+		// this.animatedElmts = [this.$bg[0]];
+		this.mainTL = new TimelineLite();
+		this.mainTL.stop();
+
+		var timeline = new TimelineLite();
+
+		var thanks01 = this.refs.thanks01;
+		var thanks02 = this.refs.thanks02;
+		var thanks03 = this.refs.thanks03;
+
+		var luck = this.refs.luck;
+        var canvasContainer = this.refs.canvasContainer;
+
+		const delayBallon = 1.7;
+		const durationLetters = 6;
+		const delayLetters = 4.5;
+
+        const halfHeight = this.windowHeight / 2;
+
+		timeline
+
+		.from(thanks01, 1, {
+			y: halfHeight,
+            opacity:0,
+			ease: Power4.easeOut
+		}, 0)
+
+		.from(thanks02, 1, {
+			y: halfHeight,
+            opacity:0,
+			ease: Power4.easeOut
+		}, .1)
+
+        .from(thanks03, 1, {
+			y: halfHeight,
+            opacity:0,
+			ease: Power4.easeOut
+		}, .2)
+
+        .from(luck, 1, {
+			x: 300,
+            opacity:0,
+			ease: Power4.easeOut
+		}, 1)
+
+        .to(thanks01, 1, {
+			opacity: 0.05,
+			ease: Power1.easeInOut
+		}, 1)
+
+		.to(thanks02, 1, {
+			opacity: 0.05,
+			ease: Power1.easeInOut
+		}, 1)
+
+        .to(thanks03, 1, {
+			opacity: 0.05,
+			ease: Power1.easeInOut
+		}, 1)
+
+        .from(canvasContainer, 1, {
+			opacity: 0,
+			ease: Power1.easeInOut
+		}, 1)
+        .to(this.distortFilter,2,{
+            amplitude: 9.0,
+			ease: Power3.easeInOut
+        })
+
+		this.mainTL.add(timeline, 0);
+		// this.animatedElmts.push(a, m, g, _, y);
 
 	}
 
     setupScene(){
 
-        this.stats = new Stats(false);
-        document.body.appendChild(this.stats.domElement);
+        // this.stats = new Stats(false);
+        // document.body.appendChild(this.stats.domElement);
 
         //Create the renderer
         this.renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight,{
@@ -271,7 +357,8 @@ class FishVideo extends Component {
         this.DotFilter = new customFilters.DotFilter();
         this.distortFilter = new customFilters.DistortFilter();
 
-        this.distortFilter.time = 0;
+        this.distortFilter.time = 0.0;
+        this.distortFilter.amplitude = 50;
         this.distortFilter.res = { x: window.innerWidth, y: window.innerHeight};
         this.distortFilter.noiseTexture = PIXI.Texture.fromImage('../assets/images/noise.png');
 
@@ -367,9 +454,29 @@ class FishVideo extends Component {
 
     scrollUpdate() {
 
+
 		const scrollY = GlobalStore.get('scroll').currentY;
 		const before = scrollY < this.top;
 		// const after = scrollY > this.bottom;
+
+        if(scrollY <= this.bottom && scrollY >= this.top) {
+
+			if (scrollY !== this.scrollY) {
+
+				this.scroll = (scrollY - this.top) / this.height;
+                console.log('this.scroll', this.scroll);
+
+				this.scrollTween = new TweenLite(this, 1, {
+					easedScroll: this.scroll,
+					ease: Power3.easeOut,
+					onUpdate: () => this.updateScroll()
+				});
+
+				this.scrollY = scrollY;
+			}
+
+		}
+
 
 		// If we are before/after the first/`last frame, set the styles according first/last value.
 		// if(before || after) {
@@ -401,6 +508,12 @@ class FishVideo extends Component {
 
 	}
 
+    updateScroll() {
+
+		this.mainTL.progress(this.easedScroll);
+
+	}
+
     playVideo(){
         PIXI.glCore.VertexArrayObject.FORCE_NATIVE = true;
 
@@ -426,7 +539,7 @@ class FishVideo extends Component {
 
     rafUpdate(){
 
-        this.stats.begin();
+        // this.stats.begin();
 
         if(this.active){
             this.loop +=1;
@@ -456,16 +569,26 @@ class FishVideo extends Component {
 
         }
 
-        this.stats.end();
+        // this.stats.end();
 
     }
 
     resize(){
 
+        this.documentHeight = this.refs.el.offsetHeight;
+
         this.top = getPositionStart(this.refs.el, GlobalStore.get('viewport').height) + GlobalStore.get('viewport').height;;
         this.bottom = getPositionEnd(this.refs.el, GlobalStore.get('viewport').height);
+
+        // it's more the distance to scroll
+		this.height = this.documentHeight - GlobalStore.get('viewport').height;
+
         console.log('this.top', this.top);
-        console.log('this.top', this.bottom);
+        console.log('this.height', this.height);
+        console.log('this.documentHeight', this.documentHeight);
+
+
+        this.windowHeight = window.innerHeight;
 
     }
 

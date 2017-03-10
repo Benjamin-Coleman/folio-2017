@@ -38,7 +38,7 @@ class WorkItem extends Component {
         // this.props.setProjectActive(this.props.data.id);
 
         this.el = this.refs.workItem;
-        this.item = this.el.querySelector('.work-asset_wrapper');;
+        this.item = this.el.querySelector('.work-asset_wrapper');
         this.elDesc = this.el.querySelector('.desc-wrapper');
         this.elDescTitle = this.elDesc.querySelector('h2');
         this.elDescP = this.elDesc.querySelector('p');
@@ -50,7 +50,7 @@ class WorkItem extends Component {
         this.elTitle = this.el.querySelector('.work-title');
         this.elTitleBack = this.el.querySelector('.title-back');
         this.elPLayer = this.el.querySelector('.video-player');
-        this.elLinks = this.el.querySelector('.link-wrapper');
+        this.elLinks = this.el.querySelector('.link-wrapper ul');
 
         // const url = "/assets/videos/loop.mp4";
         // this.setState({
@@ -62,7 +62,6 @@ class WorkItem extends Component {
     }
 
     bindEvents() {
-        console.log('this.elVideo', this.elVideo);
 
         GlobalStore.on('change:viewport', () => this.resize());
 		GlobalStore.on('change:scroll', () => this.scrollUpdate());
@@ -112,7 +111,6 @@ class WorkItem extends Component {
 
         // this.resize();
         const halfHeight = this.item.offsetHeight / 2;
-        console.log('halfHeight', halfHeight);
 
         // TweenMax.set(this.el, {scaleX: 0.9, scaleY: 0.9});
         TweenMax.set(this.refs.maskLeft, {x:'-100%'});
@@ -120,6 +118,7 @@ class WorkItem extends Component {
         TweenMax.set(this.refs.maskTop, {y:'-100%'});
         TweenMax.set(this.refs.maskBottom, {y:'100%'});
         TweenMax.set(this.elPLayer, {y:'50%'});
+        TweenMax.set(this.elLinks, {y: -50 });
 
         // this.tlShowFocus = new TimelineMax({
         //     paused: true
@@ -142,7 +141,7 @@ class WorkItem extends Component {
 			.to(this.elPLayer, 1.2, {y: '0%', ease: Power2.easeInOut}, 0)
 			.to(this.elTitle, 1, {y: distance, ease: Power2.easeInOut}, .2)
 			.to(this.elTitleBack, 1, {y: distance, ease: Power2.easeInOut}, .2)
-			.to(this.elLinks, 1, {y:46, ease: Power2.easeInOut}, .2);
+			.to(this.elLinks, 1, {y:0, ease: Power2.easeInOut}, .2);
 
     }
 
@@ -170,17 +169,29 @@ class WorkItem extends Component {
 
             const distance = this.item.offsetWidth * 0.375;
             const distanceTitle = this.item.offsetWidth * 0.0625;
-            console.log('distance', distance);
 
-            this.tlDisPlayInfo.to(this.refs.maskLeft, .8, {x:'0%', ease: Power2.easeInOut},0)
-                .to(this.refs.maskRight, .8, {x:'0%', ease: Power2.easeInOut},0)
-                .to(this.refs.maskBottom, .8, {y:'0%', ease: Power2.easeInOut},0)
-                .to(this.refs.maskTop, .8, {y:'0%', ease: Power2.easeInOut},0)
-                .to(this.refs.wrapper, 1, {x:-distance , ease: Power2.easeInOut},0)
-                .to(this.elDescTitle, 1, {x:-distanceTitle, ease: Power2.easeOut},.2)
-                .to(this.elDescP, 1, {x:-distanceTitle, ease: Power2.easeOut},.3)
-                .to(this.elSeason, 1, {x:-40, autoAlpha:0, ease: Power2.easeIn}, 0)
-                .staggerTo(infosStaggerEl, 1 , {x:0, autoAlpha:1,ease: Power2.easeOut},.1 ,.3);
+            if(GlobalStore.config.isMobile){
+
+                const distanceTitle = this.el.querySelector('.work-infos_wrapper').offsetHeight / 2 + 40;
+
+                this.tlDisPlayInfo.to(this.refs.maskLeft, .8, {x:'0%', ease: Power2.easeInOut},0)
+                    .to(this.refs.wrapper, 1, {x:-this.item.offsetWidth , ease: Power2.easeInOut},0)
+                    .to(this.elTitleBack, 1, {y:-distanceTitle, ease: Power2.easeOut},.2)
+                    .to(this.elDescTitle, 1, {x:-this.item.offsetWidth, ease: Power2.easeOut},.2)
+                    .to(this.elDescP, 1, {x: -this.item.offsetWidth, ease: Power2.easeOut},.3)
+                    .staggerTo(infosStaggerEl, 1 , {x:0, autoAlpha:1,ease: Power2.easeOut},.1 ,.3);
+
+            } else {
+                 this.tlDisPlayInfo.to(this.refs.maskLeft, .8, {x:'0%', ease: Power2.easeInOut},0)
+                    .to(this.refs.maskRight, .8, {x:'0%', ease: Power2.easeInOut},0)
+                    .to(this.refs.maskBottom, .8, {y:'0%', ease: Power2.easeInOut},0)
+                    .to(this.refs.maskTop, .8, {y:'0%', ease: Power2.easeInOut},0)
+                    .to(this.refs.wrapper, 1, {x:-distance , ease: Power2.easeInOut},0)
+                    .to(this.elDescTitle, 1, {x:-distanceTitle, ease: Power2.easeOut},.2)
+                    .to(this.elDescP, 1, {x:-distanceTitle, ease: Power2.easeOut},.3)
+                    .to(this.elSeason, 1, {x:-40, autoAlpha:0, ease: Power2.easeIn}, 0)
+                    .staggerTo(infosStaggerEl, 1 , {x:0, autoAlpha:1,ease: Power2.easeOut},.1 ,.475);
+            }
 
             this.tlDisPlayInfo.play(0);
 
@@ -197,7 +208,7 @@ class WorkItem extends Component {
     hideInfos(){
 
         if(this.infoDisplayed){
-            this.tlDisPlayInfo.tweenTo(0);
+            this.tlDisPlayInfo.reverse();
             this.infoDisplayed = false;
             this.infoDisplayedCompleted = false;
         }
@@ -211,7 +222,7 @@ class WorkItem extends Component {
             this.timer = null;
         } else {
 
-            this.timer = TweenMax.delayedCall( 1, () => this.triggerActive());
+            this.timer = TweenMax.delayedCall( .75, () => this.triggerActive());
 
         }
 
@@ -395,23 +406,39 @@ class WorkItem extends Component {
 	render() {
 
         const {data} = this.props;
-        const className = "work-item grid__col-" + data.col + (this.state.isHovered ? ' isHovered' : '');
         const {
             playing, preload, loop, progressPercent
         } = this.state;
 
-        const percentGrid = Math.round(100 / 12 * 100) / 100;
-        // console.log('progressPercent', progressPercent);
+        const {
+            isMobile
+        } = GlobalStore.config;
 
-        const style = {
+        const percentGrid = Math.round(100 / 12 * 100) / 100;
+
+        const justifyContent = data.align ? (data.align === 'top' ? 'flex-start' : 'flex-end') : 'center';
+        const padding = data.align && (data.align === 'top' ? '5% 0 0 0' : '0 0 5% 0');
+
+        let style = {
             marginRight: data.offsetRight * percentGrid + '%',
-            marginLeft: data.offsetLeft * percentGrid + '%'
+            marginLeft: data.offsetLeft * percentGrid + '%',
+            justifyContent: justifyContent,
+            padding: data.align ? padding : null
         };
 
-    //    const playerStyle = {
-    //         opacity : this.state.isHovered ? 1 : 0,
-    //         transition : 'opacity 1s ease-in-out'
-    //    }
+        if(isMobile){
+            style = {
+                marginLeft: 0 + '%',
+                marginRight: 2 + '%',
+                justifyContent: 'center',
+                padding: null
+            };
+        }
+
+        const colNumber = isMobile ? 10 : data.col;
+        let className = "work-item grid__col-" + colNumber +" "+ (data.smallTitle ? "small-title" : '');
+
+        isMobile && (className += " grid__col--bleed");
 
 		return (
             <div ref="workItem" className={className} style={style}>
@@ -423,7 +450,11 @@ class WorkItem extends Component {
 
                         <div className="title-back"><h2>{data.symbol}</h2></div>
                         <div ref="wrapper" className="work-asset_wrapper" onClick={() => this.hideInfos()}>
-                            <ProgressBar parentWidth={this.workAssetwidth} parentHeight={this.workAssetHeight} playing={playing} progress={progressPercent}/>
+
+                            {!GlobalStore.config.isMobile &&
+                                <ProgressBar parentWidth={this.workAssetwidth} parentHeight={this.workAssetHeight} playing={playing} progress={progressPercent}/>
+                            }
+
                             <ReactPlayer
                                 ref={(player => { this.player = player })}
                                 className='video-player'

@@ -37,38 +37,44 @@ class Intro extends Component {
             console.info('Action:', e.action);
             console.info('Text:', e.text);
             console.info('Trigger:', e.trigger);
-
             this.setState({ emailCopied: true });
-
             e.clearSelection();
         });
 
-        this.title = this.refs.mainTitle;
-        const spannedText = this.createLetterSpan(this.title.textContent);
-        this.title.innerHTML = spannedText;
+        if(!GlobalStore.config.isMobile){
 
-        setTimeout(() => {
-            // this.setupLetterScene();
-        }, 1000);
+            this.title = this.refs.mainTitle;
+            const spannedText = this.createLetterSpan(this.title.textContent);
+            this.title.innerHTML = spannedText;
+
+            setTimeout(() => {
+                this.setupLetterScene();
+            }, 1000);
+
+        }
 
         MorphSVGPlugin.convertToPath('.shape');
 
         this.hoverLogo = new TimelineMax({ paused: true });
         this.hoverLogo
-            .to('.t', 1, { morphSVG: '.eye01' }, 0)
-            .to('.m', 1, { morphSVG: '.eye02' }, 0)
-            .to('.i', 1, { morphSVG: '.mouth' }, 0)
-            .to('.i', 1, { morphSVG: '.smile_up' }, 2)
-            .to('.i', 1, { y: -12, morphSVG: { shape: ".smile_down", shapeIndex: 3 } }, 4);
+            .to(this.refs.el.querySelector('.background_s'), .5, { strokeWidth: 5, ease: Power2.easeOut }, 0)
+            .to(this.refs.el.querySelector('.t'), .5, { morphSVG: this.refs.el.querySelector('.eye01'), ease: Power2.easeOut }, 0)
+            .to(this.refs.el.querySelector('.t'), .5, { morphSVG: this.refs.el.querySelector('.eye01'), ease: Power2.easeOut }, 0)
+            .to(this.refs.el.querySelector('.m'), .5, { morphSVG: this.refs.el.querySelector('.eye02'), ease: Power2.easeOut }, 0)
+            .to(this.refs.el.querySelector('.i'), .5, { morphSVG: this.refs.el.querySelector('.mouth'), ease: Power2.easeOut }, 0)
+            .to(this.refs.el.querySelector('.i'), .5, { morphSVG: this.refs.el.querySelector('.smile_up'), ease: Power2.easeOut}, 1.5)
+            .to(this.refs.el.querySelector('.i'), .5, { y: -12, morphSVG: { shape: ".smile_down", shapeIndex: 3 } }, 3);
 
         this.refs.el.querySelector('#logo').addEventListener('mouseenter', () => {
             console.log('mouseenter');
+            this.hoverLogo.timeScale(1);
             this.hoverLogo.play();
         });
 
         this.refs.el.querySelector('#logo').addEventListener('mouseleave', () => {
             console.log('mouseleave');
-            this.hoverLogo.tweenTo(0);
+            this.hoverLogo.timeScale(1.5);
+            this.hoverLogo.reverse();
         });
 
         this.setupDom();
@@ -90,10 +96,6 @@ class Intro extends Component {
         TweenMax.set(this.refs.contact_link, { x: '100%' });
 
     }
-
-    // componentWillUpdate(nextProps, nextState){
-
-    // }
 
     scrollUpdate() {
 
@@ -213,7 +215,7 @@ class Intro extends Component {
 
     explosion() {
 
-        this.refs.link_label.textContent = 'Dammit !!!'
+        this.refs.link_label.textContent = 'Dammit !'
 
         var Body = Matter.Body;
         var bodyB = this.blocks[1];
@@ -269,7 +271,7 @@ class Intro extends Component {
 
     initLetterClones() {
 
-        // console.log('this.letters.length', this.letters.length);
+        console.log('this.letters.length', this.letters.length);
 
         for (var i = 0; i < this.letters.length; i++) {
 
@@ -427,8 +429,6 @@ class Intro extends Component {
 
         if (this.state.active && this.engine) {
 
-            console.log('updatePosition');
-
             //run our own runner to be able to stop it properly
             // Matter.Engine.update(this.engine, 1000 / 60, 1);
             Matter.Runner.tick(this.runner, this.engine, 1000 / 60);
@@ -571,7 +571,7 @@ class Intro extends Component {
             emailCopied
         } = this.state;
 
-        const mailText = emailCopied ? 'Email copied! Can\'t to hear from you' : 'Contact';
+        const mailText = emailCopied ? 'Email copied! Can\'t wait to hear from you' : 'Contact me';
 
         const backgroundSvg = styles.background_svg + " background_s";
         const letterSvgT = styles.letter_svg + " letter t shape";
@@ -583,11 +583,13 @@ class Intro extends Component {
         const letterSvgMouthUp = styles.smile_svg + " smile_up shape";
         const letterSvgMouthDown = styles.smile_svg + " smile_down shape";
 
-        return (
-            <div className = { classNameGrid }ref = "el" >
+        const title = GlobalStore.config.isMobile ? 'Tim Roussilhe' : 'Timothée Roussilhe'
 
-                <div className = { styles.logo } >
-                    <svg className = { styles.logo_svg }version="1.1" id="logo"x="0px"y="0px" viewBox="0 0 102 102" >
+        return (
+            <div className={ classNameGrid }ref="el" >
+
+                <div className={ styles.logo } >
+                    <svg className={ styles.logo_svg }version="1.1" id="logo"x="0px"y="0px" viewBox="0 0 102 102" >
                         <circle className={ backgroundSvg } cx="51" cy="51" r="48.5" / >
                         <polygon className={ letterSvgT } points="34.3,37 40.9,37 40.9,38.4 38.4,38.4 38.4,45.5 36.8,45.5 36.8,38.4 34.3,38.4 " />
                         <rect x="52.4" y="68" className={ letterSvgI } width="1.6"  height="8.5" / >
@@ -601,34 +603,43 @@ class Intro extends Component {
                     </svg>
                 </div>
 
-            <nav className = { classNavigation }
-            onMouseLeave = {
-                () => this.onContactLeave() }
-            role = "navigation" >
-            <p ref = "contact_label"
-            onMouseEnter = {() => this.onContactEnter() }
-            className = { styles.navigation__p } > { mailText } </p>
+            <nav className={ classNavigation }
+                onMouseLeave={
+                    () => this.onContactLeave() }
+                role="navigation" >
+                <p ref="contact_label"
+                onMouseEnter={() => this.onContactEnter() }
+                className={ styles.navigation__p } > { mailText } </p>
 
-                <a ref = "contact_copy"
-                className = { styles.navigation__link }
-                data-clipboard-action = "copy"
-                data-clipboard-text = "timothee.roussilhe@gmail.com"
-                target = "_blank" > Copy my email address </a>
+                <a ref="contact_copy"
+                className={ styles.navigation__link }
+                data-clipboard-action="copy"
+                data-clipboard-text="timothee.roussilhe@gmail.com"
+                target="_blank" > Copy my email address </a>
 
-                <span ref = "contact_or"
-                className = { styles.contact_or } > or </span>
+                <span ref="contact_or"
+                className={ styles.contact_or } > or </span>
 
-                <a ref = "contact_link"
-                className = { styles.navigation__link }
-                href = "mailto:timothee.roussilhe@gmail.com"
-                target = "_blank"> Open your email
+                <a ref="contact_link"
+                className={ styles.navigation__link }
+                href="mailto:timothee.roussilhe@gmail.com"
+                target="_blank"> Open your email
                 default app < br/> (you know the thing called "email") </a>
+
+            </nav>
+
+            <nav className={ classNavigation +' '+ styles.mobile__nav }>
+
+                <a
+                className={ styles.navigation__link }
+                href="mailto:timothee.roussilhe@gmail.com"
+                target="_blank"> Send me an email</a>
 
             </nav>
 
             <div className={ styles.content__wrapper } >
 
-                <h1 ref="mainTitle" className={ styles.title } >Timothée Roussilhe</h1>
+                <h1 ref="mainTitle" className={ styles.title } >{title}</h1>
                 <h2 className={ styles.subtitle } >Creative Developer</h2>
                 <div ref="stage" className={ styles.stage } > </div>
 
