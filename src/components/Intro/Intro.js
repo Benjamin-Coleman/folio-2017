@@ -215,7 +215,7 @@ class Intro extends Component {
 
     explosion() {
 
-        this.refs.link_label.textContent = 'Dammit !'
+        this.refs.link_label.textContent = 'Dammit! Now scroll down.'
 
         var Body = Matter.Body;
         var bodyB = this.blocks[1];

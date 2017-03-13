@@ -224,7 +224,7 @@ class FeaturedProjects extends Component {
 		return (
 			<div ref="el" className={classNameGrid}>
 				<header className="grid__col-9">
-					<h2 ref="title01">Here a selection of my work</h2>
+					<h2 ref="title01">Here is a selection of my work</h2>
 					<h2 ref="title02">realized during 2014 - 2017</h2>
 				</header>
 

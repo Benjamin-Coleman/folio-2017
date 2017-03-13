@@ -12,6 +12,8 @@ var postcssFontPath = require('postcss-fontpath');
 var postcssSimpleVars = require('postcss-simple-vars');
 var postcssMixins = require('postcss-mixins');
 var postcssImport = require('postcss-import');
+var postcssMinmax = require('postcss-media-minmax');
+var postcssCustomMedia = require("postcss-custom-media");
 
 const reload = require('require-nocache')(module);
 
@@ -196,6 +198,8 @@ module.exports = {
 				mixins: cssMixins
 			}),
 			postcssFontPath(),
+			postcssCustomMedia(),
+			postcssMinmax(),
 			postcssSimpleVars({
 				variables: () => cssVars,
 				unknown: (node, name, result) => node.warn(result, 'Unknown CSS variable ', name),

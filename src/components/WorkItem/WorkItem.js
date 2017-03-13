@@ -461,7 +461,8 @@ class WorkItem extends Component {
                                 url={data.videoSourceMP4}
                                 playing={playing}
                                 preload={preload}
-                                loop={loop}
+                                loop={true}
+                                muted={true}
                                 onProgress={(e) => this.onProgress(e)}
                             />
                             {/*<div className="title-wrapper"><h3>{data.symbol}</h3></div>*/}
@@ -505,7 +506,7 @@ class WorkItem extends Component {
                             <ul>
                                 <li><a href="#" onClick={(e) => this.disPlayInfo(e)}>Infos ¬</a></li>
                                 {data.link &&
-                                    <li><a href="{data.link.url}" target="_blank">{data.link.label}</a></li>
+                                    <li><a href={data.link.url} target="_blank">{data.link.label}</a></li>
                                 }
                             </ul>
                         </div>

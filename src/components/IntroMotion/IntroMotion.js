@@ -166,46 +166,46 @@ class Intro extends Component {
 			.to(this.refs.circle, 1,
 				{strokeDashoffset: 0 , ease: Expo.easeOut}, initialDelay )
             .to(this.refs.type, 3,
-				{rotation: 40, transformOrigin: '50% 51%', force3D:true}, initialDelay + 1.5)
+				{rotation: 40, transformOrigin: '50% 51%', force3D:true}, initialDelay + 1)
 
 
             .fromTo(this.refs.circleText, .1,
 				{opacity: 0},
-				{opacity: 1, ease: Expo.easeOut}, initialDelay + 4)
+				{opacity: 1, ease: Expo.easeOut}, initialDelay + 3)
 
             .to(this.refs.circle, .1,
-				{opacity: 0}, initialDelay + 4)
+				{opacity: 0}, initialDelay + 3)
             .to(this.refs.type, .1,
-				{opacity: 0}, initialDelay + 4)
+				{opacity: 0}, initialDelay + 3)
 
             .to(this.refs.circleText, .1,
-				{opacity: 0, ease: Expo.easeOut}, initialDelay + 4.15)
+				{opacity: 0, ease: Expo.easeOut}, initialDelay + 3.15)
             .to(this.refs.circleText, .1,
-				{opacity: 1, ease: Expo.easeOut}, initialDelay + 4.3)
+				{opacity: 1, ease: Expo.easeOut}, initialDelay + 3.3)
 
             .to(this.refs.circleText, 3,
-				{rotation: -40, transformOrigin: '80px 80px', force3D:true}, initialDelay + 4)
+				{rotation: -40, transformOrigin: '80px 80px', force3D:true}, initialDelay + 3)
 
             .to(this.refs.circleText, .1,
-				{opacity: 0}, initialDelay + 7)
+				{opacity: 0}, initialDelay + 6)
 
             //FACE
-            .fromTo(faceElements, 1,
+            .fromTo(faceElements, .2,
                 {opacity: 0},
-                {opacity: 1, ease: Expo.easeOut}, initialDelay + 7.1)
+                {opacity: 1, ease: Expo.easeOut}, initialDelay + 6.1)
 
             .to(this.refs.circleText, .1,
-				{opacity: 1}, initialDelay + 8)
+				{opacity: 1}, initialDelay + 6.5)
 
-            .fromTo(randomLettersThirdOne, .3,
-				{y: 100, skewY: 30, opacity: 0},
+            .fromTo(randomLettersThirdOne, .5,
+				{y: 100, skewY: 50, opacity: 0},
+				{y: 0, skewY: 0, opacity: 1, ease: Power2.easeOut}, initialDelay + 4)
+            .fromTo(randomLettersThirdTwo, .5,
+				{y: -100, skewY: -50, opacity: 0},
+				{y: 0, skewY: 0, opacity: 1, ease: Power2.easeOut}, initialDelay + 4.5)
+            .fromTo(randomLettersThirdThree, .5,
+				{y: 100, skewY: 50, opacity: 0},
 				{y: 0, skewY: 0, opacity: 1, ease: Power2.easeOut}, initialDelay + 5)
-            .fromTo(randomLettersThirdTwo, .3,
-				{y: -100, skewY: -30, opacity: 0},
-				{y: 0, skewY: 0, opacity: 1, ease: Power2.easeOut}, initialDelay + 5.5)
-            .fromTo(randomLettersThirdThree, .3,
-				{y: 100, skewY: 30, opacity: 0},
-				{y: 0, skewY: 0, opacity: 1, ease: Power2.easeOut}, initialDelay + 6)
 
     }
 

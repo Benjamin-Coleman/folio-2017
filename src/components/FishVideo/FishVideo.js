@@ -42,6 +42,9 @@ class FishVideo extends Component {
 
 		this.documentHeight = -1;
         this.windowHeight = 0;
+
+        PIXI.utils.skipHello();
+
     }
 
 	componentDidMount(){

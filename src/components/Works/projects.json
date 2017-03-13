@@ -53,7 +53,7 @@
                     "brand": "Google",
                     "role": "Creative Developer",
                     "name": "National Park 100th",
-                    "videoSourceMP4": "/assets/videos/loop.mp4",
+                    "videoSourceMP4": "/assets/videos/parks.mp4",
                     "season": "AW 016",
                     "offsetLeft": 0,
                     "offsetRight": 0,
@@ -61,10 +61,10 @@
                     "align": "bottom",
                     "description":"An interactive tour of America’s most beautiful national parks. Follow rangers on an immersive adventure through five National Parks. Rappel into a crevasse, fly with thousands of bats, soar over an active volcano, dive through shipwrecks, and experience the Milky Way in 360° video and ambisonic audio.",
                     "agency": "Stink Studios",
-                    "dev": "React, ThreeJS, 360 videos, 4 totaly custom modules",
+                    "dev": "React, ThreeJS, 360 videos, 4 custom modules",
                     "link":{
                         "label": "Visit Website ¬",
-                        "url": "https://magicminute.withgoogle.com/"
+                        "url": "https://artsandculture.withgoogle.com/en-us/national-parks-service"
                     }
                 }
             ]
@@ -78,7 +78,7 @@
 			"videoSourceMP4": "/assets/videos/spotify_pitchfork.mp4",
             "offsetLeft": 2,
             "offsetRight": 2,
-            "col": 7,
+            "col": 8,
             "description":"We worked together with Pitchfork and Spotify to create Inside Discovery. A editorial interactive website that let user have a look into fresh Discover Weekly playlists from Pitchfork editors and their favorite artists.",
             "agency": "Stink Studios",
             "dev": "Css animation, Homemade framework",
@@ -112,7 +112,7 @@
                 {
                     "id": "image01",
                     "image": true,
-                    "imageSource": "https://pbs.twimg.com/media/C5m2YphWgAAO4g5.jpg:small",
+                    "imageSource": "/assets/images/flower.jpg",
                     "offsetLeft": 1,
                     "offsetRight": 0,
                     "col": 3
@@ -170,7 +170,7 @@
             "agency": "Freelance",
             "link":{
                 "label": "Visit the website ¬",
-                "url": "http://iletaituneforet-expedition.org/"
+                "url": "http://iletaituneforet.timroussilhe.com/"
             }
         },
         {
@@ -219,7 +219,7 @@
             "dev": "ThreeJS, custom video modules, binaural sounds",
             "link":{
                 "label": "Case study ¬",
-                "url": "https://www.behance.net/gallery/41645265/Twitter-Marketing-Platform"
+                "url": "http://dev.stinkdigital.fr/ubisoft/farcry4/xx-XX/"
             }
         }
     ]

@@ -55,7 +55,7 @@ blockquote {
 
     position: absolute !important;
     left: 25%;
-    bottom: 230px;
+    bottom: 38vh;
     height: auto;
 
     p{
@@ -79,7 +79,7 @@ blockquote {
 }
 
 .line04{
-    margin-left: 155px;
+    margin-left: 181px;
 }
 
 .line05{

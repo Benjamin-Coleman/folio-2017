@@ -1,7 +1,7 @@
 @import './../../base/utils/media-queries.css';
 
 .works-section{
-	max-width: 1366px;
+	max-width: 1380px;
 	margin: 0 auto;
 	min-height: 100vh;
     overflow: hidden;
