@@ -7,9 +7,11 @@
 	align-items: center;
 	justify-content: center;
 	background-color:#AFAFAF;
-	position: relative;
+	position: fixed;
 	display: flex;
-
+	width: 100%;
+	height: 100vh;
+	// z-index: -1;
 }
 
 .logo{
@@ -302,4 +304,34 @@
 	font-size: 12px;
 	line-height: 20px;
 	opacity: .5;
+}
+
+.unactive{
+
+	background-color:white;
+	pointer-events: none;
+
+	.letter{
+		color: black;
+	}
+
+	.logo{
+		display: none;
+	}
+	.navigation{
+		display: none;
+	}
+	.subtitle {
+		display: none;
+	}
+	.link_wrapper{
+		display: none;
+	}
+}
+
+.letter{
+	height: 70px;
+	line-height: 90px;
+	/*background-color: yellow;*/
+	display: inline-block;
 }

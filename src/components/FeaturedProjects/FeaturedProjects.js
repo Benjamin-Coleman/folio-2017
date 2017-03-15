@@ -26,10 +26,11 @@ class FeaturedProjects extends Component {
 
 	componentDidMount(){
 
-		this.resize();
 		this.bindEvents();
 		this.setTimeLines();
-
+		setTimeout(() => {
+			this.resize();
+		}, 0);
 	}
 
 	// shouldComponentUpdate(){
@@ -170,31 +171,31 @@ class FeaturedProjects extends Component {
 
 		}
 
-		// If we are before/after the first/`last frame, set the styles according first/last value.
-		if(before || after) {
+		// // If we are before/after the first/`last frame, set the styles according first/last value.
+		// if(before || after) {
 
-            // we are at firt or last and allready setStyle to reach initial/final Value
-             if( (before && this.edge === -1) || (after && this.edge === 1)){
-                // continue;
-            } else {
-                this.edge = before ? -1 : 1;
-                this.active = false;
-                // DEFAULT STATE HERE
-                this.refs.wrapper.style.position = 'absolute';
-                this.refs.wrapper.style.top = (this.edge === -1) ? '0px' : this.refs.el.offsetHeight - GlobalStore.get('viewport').height + 'px';
-            }
+        //     // we are at firt or last and allready setStyle to reach initial/final Value
+        //      if( (before && this.edge === -1) || (after && this.edge === 1)){
+        //         // continue;
+        //     } else {
+        //         this.edge = before ? -1 : 1;
+        //         this.active = false;
+        //         // DEFAULT STATE HERE
+        //         this.refs.wrapper.style.position = 'absolute';
+        //         this.refs.wrapper.style.top = (this.edge === -1) ? '0px' : this.refs.el.offsetHeight - GlobalStore.get('viewport').height + 'px';
+        //     }
 
-		} else {
+		// } else {
 
-			if (!this.active) {
-				this.edge = 0;
-				this.active = true;
-				// SHOW HERE
-				console.log('active !!!');
-                this.refs.wrapper.style.position = 'fixed';
-				this.refs.wrapper.style.top = '0px';
-			}
-		}
+		// 	if (!this.active) {
+		// 		this.edge = 0;
+		// 		this.active = true;
+		// 		// SHOW HERE
+		// 		console.log('active !!!');
+        //         this.refs.wrapper.style.position = 'fixed';
+		// 		this.refs.wrapper.style.top = '0px';
+		// 	}
+		// }
 
 	}
 
@@ -209,7 +210,8 @@ class FeaturedProjects extends Component {
 		this.documentHeight = this.refs.el.offsetHeight;
 
         this.top = getPositionStart(this.refs.el, GlobalStore.get('viewport').height) + GlobalStore.get('viewport').height;
-        this.bottom = getPositionEnd(this.refs.el, GlobalStore.get('viewport').height) - GlobalStore.get('viewport').height;
+        console.log('BOTTOM ---------------');
+		this.bottom = getPositionEnd(this.refs.el, GlobalStore.get('viewport').height) - GlobalStore.get('viewport').height;		
 
 		// it's more the distance to scroll
 		this.height = this.top + this.documentHeight - (window.innerHeight / 2);

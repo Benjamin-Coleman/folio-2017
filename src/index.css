@@ -65,15 +65,25 @@ body {
 	left: 0;
 	top: 0;
 	transform-origin: bottom center;
-	height: 90px;
-    left: 50%;
-    margin-left: -10px;
-    top: -10px;
+	height: 70px;
+	left: 50%;
+  margin-left: -9px;
+  top: -7px;
 	text-transform: uppercase;
 	font-family: 'Akkurat Pro';
 	font-weight: 400;
+	font-size: 12px;
 }
 
 @media (--phone) {
+
+}
+
+.unactive{
+
+	.letter{
+		color: black;
+		opacity: .05;
+	}
 
 }

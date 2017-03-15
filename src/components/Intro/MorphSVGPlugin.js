@@ -305,7 +305,7 @@ var _gsScope = "undefined" != typeof module && module.exports && "undefined" != 
                         shape: t
                     }), p = R(t.shape || t.d || t.points || "", "d" === a, e), d && i.test(p) ? (c("WARNING: a <" + o + "> cannot accept path data. " + O), !1) : (p && (this._target = e, e.getAttributeNS(null, "data-original") || e.setAttributeNS(null, "data-original", e.getAttribute(a)), s = this._addTween(e, "setAttribute", e.getAttribute(a) + "", p + "", "morphSVG", !1, a, "object" == typeof t.precompile ? function(e) {
                         e[0] = t.precompile[0], e[1] = t.precompile[1]
-                    } : "d" === a ? G(t.shapeIndex, t.map || F.defaultMap, t.precompile) : B(t.shapeIndex)), s && (this._overwriteProps.push("morphSVG"), s.end = p, s.endProp = a)), u)) : (c("WARNING: cannot morph a <" + o + "> SVG element. " + O), !1)) : (window.location.href = "http://" + f + g + "?plugin=" + l + "&source=" + h, !1)
+                    } : "d" === a ? G(t.shapeIndex, t.map || F.defaultMap, t.precompile) : B(t.shapeIndex)), s && (this._overwriteProps.push("morphSVG"), s.end = p, s.endProp = a)), u)) : (c("WARNING: cannot morph a <" + o + "> SVG element. " + O), !1)) : ''
                 },
                 set: function(e) {
                     var t;

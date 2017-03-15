@@ -1,10 +1,11 @@
 const body = document.body;
 
 function getOffset(element) {
-  let top = 0, left = 0;
   var bodyRect = body.getBoundingClientRect(),
     elemRect = element.getBoundingClientRect(),
     offset = elemRect.top - bodyRect.top;
+	console.log('offset', offset);
+	
     return offset;
 }
 
@@ -31,10 +32,11 @@ function getPositionStart( element, wHeight = window.innerHeight, viewFactor ){
 function getPositionEnd( element, wHeight = window.innerHeight, viewFactor ){
 
 	var offset = getOffset(element);
+	
 	var elementHeight = element.offsetHeight;
 	var factor = viewFactor ? viewFactor : 0;
     const documentHeight = getDocumentHeight();
-
+	
 	var positionBottom = offset + elementHeight - (elementHeight * factor);
 
 	return positionBottom > documentHeight - wHeight ? documentHeight - wHeight : positionBottom;

@@ -1,8 +1,9 @@
 @import './../../base/utils/media-queries.css';
 
 .section{
-    min-height: 500vh;
+    min-height: 400vh;
     position: relative;
+    background-color: white;
 }
 
 .thanks_wrapper{
@@ -93,4 +94,8 @@
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     white-space: nowrap;
+}
+
+.luck_span{
+    display: inline-block;
 }

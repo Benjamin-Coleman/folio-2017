@@ -38,37 +38,38 @@ class Works extends Component {
 	componentDidMount() {
 
 		this.bindEvents();
-		this.resize();
+		setTimeout(() => {
+			this.resize();
+				this.smooth = new Smooth({ smoothContainer: false });
+			// this.smoothElements = [];
+			this.smooth.init();
 
-		this.smooth = new Smooth({ smoothContainer: false });
-		// this.smoothElements = [];
-		this.smooth.init();
+			const sidebar = this.refs.sidebar.querySelector('.sidebar_wrapper');
+			const padding = 80;
+			let element = {
+				el: sidebar,
+				animations: [{
+					transform: [
 
-		const sidebar = this.refs.sidebar.querySelector('.sidebar_wrapper');
-		const padding = 80;
-		let element = {
-			el: sidebar,
-			animations: [{
-				transform: [
+						{
+							start: this.top,
+							end: this.bottom,
+							initialValue: 0,
+							finalValue: GlobalStore.get('viewport').height - 72 - padding,
+							transformType: 'translate3d',
+							axis: 'y',
+							ease: 0.05
+						}
+					]
 
-					{
-						start: this.top,
-						end: this.bottom,
-						initialValue: 0,
-						finalValue: GlobalStore.get('viewport').height - 72 - padding,
-						transformType: 'translate3d',
-						axis: 'y',
-						ease: 0.05
-					}
-				]
+				}]
+			};
 
-			}]
-		};
+			this.smooth.addElement(element);
+			this.smooth.start();
 
-		this.smooth.addElement(element);
-		this.smooth.start();
-
-		this.setupDom();
+			this.setupDom();
+		}, 0);
 
 	}
 

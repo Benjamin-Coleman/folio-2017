@@ -53,12 +53,11 @@ class Intro extends Component {
 
         }
 
-        MorphSVGPlugin.convertToPath('.shape');
+        MorphSVGPlugin.convertToPath(this.refs.el.querySelectorAll('.shape'));
 
         this.hoverLogo = new TimelineMax({ paused: true });
         this.hoverLogo
             .to(this.refs.el.querySelector('.background_s'), .5, { strokeWidth: 5, ease: Power2.easeOut }, 0)
-            .to(this.refs.el.querySelector('.t'), .5, { morphSVG: this.refs.el.querySelector('.eye01'), ease: Power2.easeOut }, 0)
             .to(this.refs.el.querySelector('.t'), .5, { morphSVG: this.refs.el.querySelector('.eye01'), ease: Power2.easeOut }, 0)
             .to(this.refs.el.querySelector('.m'), .5, { morphSVG: this.refs.el.querySelector('.eye02'), ease: Power2.easeOut }, 0)
             .to(this.refs.el.querySelector('.i'), .5, { morphSVG: this.refs.el.querySelector('.mouth'), ease: Power2.easeOut }, 0)
@@ -78,6 +77,10 @@ class Intro extends Component {
         });
 
         this.setupDom();
+
+         setTimeout(() => {
+			this.resize();
+		}, 0);
 
     }
 
@@ -116,6 +119,7 @@ class Intro extends Component {
                 this.setState({ active: false });
                 // Matter.Render.stop(this.renderer);
                 console.log('STOP');
+                this.refs.el.classList.add('unactive');
             }
 
         } else {
@@ -124,6 +128,7 @@ class Intro extends Component {
                 this.edge = 0;
                 this.setState({ active: true });
                 this.updatePosition();
+                this.refs.el.classList.remove('unactive');
                 console.log('PLAY');
             }
         }
@@ -362,10 +367,6 @@ class Intro extends Component {
 
         var characters = text.split('<br>').join('£').split('&amp;').join('±').split('');
 
-        //var spans = [];
-        //var word = $('<span class="word"/>');
-        //spans.push(word);
-
         var content = '';
         for (var i = 0; i < characters.length; i++) {
 
@@ -373,18 +374,12 @@ class Intro extends Component {
 
                 if (characters[i] === "£") content += '<span class="return"/>'; //spans.push($('<span class="return"/>'));
                 else content += '<span class="space">' + characters[i] + '</span>'; //spans.push($('<span class="space">' + characters[i] + '</span>'));
-                //word = $('<span class="word"/>');
-                //spans.push(word);
-
 
             } else {
 
                 var ch = characters[i];
                 if (ch === "±") ch = "&amp;";
-
                 content += '<span class="letter">' + ch + '</span>';
-                //word.append('<span class="letter">' + ch + '</span>')
-
             }
 
         }
@@ -556,14 +551,18 @@ class Intro extends Component {
             this.updateBorders();
         }
 
-        this.top = getPositionStart(this.refs.el, GlobalStore.get('viewport').height);
-        this.bottom = getPositionEnd(this.refs.el, GlobalStore.get('viewport').height);
+        this.top = 0;
+        this.bottom = GlobalStore.get('viewport').height;
 
     }
 
     render() {
-
-        const classNameGrid = styles.introduction;
+        const unactive = (this.state.active === false ? styles.unactive : '');
+        console.log('unactive', unactive);
+        
+        const classNameGrid = styles.introduction +' '+ unactive;
+        console.log('classNameGrid', classNameGrid);
+        
         const classNavigation = styles.navigation;
         const classLinkWrapper = styles.link_wrapper;
 
@@ -660,11 +659,11 @@ class Intro extends Component {
             </div>
 
             <div ref="link"
-            onMouseEnter={
-                () => this.onLinkEnter() }
-            onMouseLeave={
-                () => this.onLinkLeave() }
-            className={ classLinkWrapper } >
+                onMouseEnter={
+                    () => this.onLinkEnter() }
+                onMouseLeave={
+                    () => this.onLinkLeave() }
+                className={ classLinkWrapper } >
                 <span ref="link_icon"
                 className={ styles.link_icon } > ☠ </span>
                 <a className={ styles.link }

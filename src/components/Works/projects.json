@@ -21,53 +21,42 @@
             }
         },
         {
-            "container": true,
-            "id": "container01",
-            "doubleChild": true,
-            "children":[
-               {
-                    "id": "01",
-                    "smallTitle": true,
-                    "symbol": "Magic Minute Project",
-                    "brand": "Android Wear",
-                    "role": "Lead Developer & Motion",
-                    "name": "Portfolio",
-                    "videoSourceMP4": "/assets/videos/magicminutes.mp4",
-                    "season": "AW 016",
-                    "offsetLeft": 0,
-                    "offsetRight": 0,
-                    "align": "top",
-                    "col": 6,
-                    "description":"What’s possible in a minute? You can fall in love. Launch a rocket ship. Set a rap world record. <br/>We partnered together with Android Wear and Chapter, and teamed up with with makers, doers, and dreamers to launch The Magic Minute Project. It’s a collection of one-minute films celebrating what time means to all of us—told one #MagicMinute at a time.",
-                    "agency": "Stink Studios & Chapter",
-                    "dev": "Css animation, Homemade framework",
-                    "link":{
-                        "label": "Visit Website ¬",
-                        "url": "https://magicminute.withgoogle.com/"
-                    }
-                },
-                {
-                    "id": "02",
-                    "smallTitle": true,
-                    "symbol": "The Hidden Worlds of the National Parks",
-                    "brand": "Google",
-                    "role": "Creative Developer",
-                    "name": "National Park 100th",
-                    "videoSourceMP4": "/assets/videos/parks.mp4",
-                    "season": "AW 016",
-                    "offsetLeft": 0,
-                    "offsetRight": 0,
-                    "col": 6,
-                    "align": "bottom",
-                    "description":"An interactive tour of America’s most beautiful national parks. Follow rangers on an immersive adventure through five National Parks. Rappel into a crevasse, fly with thousands of bats, soar over an active volcano, dive through shipwrecks, and experience the Milky Way in 360° video and ambisonic audio.",
-                    "agency": "Stink Studios",
-                    "dev": "React, ThreeJS, 360 videos, 4 custom modules",
-                    "link":{
-                        "label": "Visit Website ¬",
-                        "url": "https://artsandculture.withgoogle.com/en-us/national-parks-service"
-                    }
-                }
-            ]
+            "id": "01",
+            "symbol": "Magic Minute Project",
+            "brand": "Android Wear",
+            "role": "Lead Developer & Motion",
+            "name": "Portfolio",
+            "videoSourceMP4": "/assets/videos/magicminutes.mp4",
+            "season": "AW 016",
+            "offsetLeft": 0,
+            "offsetRight": 0,
+            "col": 7,
+            "description":"What’s possible in a minute? You can fall in love. Launch a rocket ship. Set a rap world record. <br/>We partnered together with Android Wear and Chapter, and teamed up with with makers, doers, and dreamers to launch The Magic Minute Project. It’s a collection of one-minute films celebrating what time means to all of us—told one #MagicMinute at a time.",
+            "agency": "Stink Studios & Chapter",
+            "dev": "Css animation, Homemade framework",
+            "link":{
+                "label": "Visit Website ¬",
+                "url": "https://magicminute.withgoogle.com/"
+            }
+        },
+        {
+            "id": "02",
+            "symbol": "The Hidden Worlds of the National Parks",
+            "brand": "Google",
+            "role": "Creative Developer",
+            "name": "National Park 100th",
+            "videoSourceMP4": "/assets/videos/parks.mp4",
+            "season": "AW 016",
+            "offsetLeft": 5,
+            "offsetRight": 0,
+            "col": 7,
+            "description":"An interactive tour of America’s most beautiful national parks. Follow rangers on an immersive adventure through five National Parks. Rappel into a crevasse, fly with thousands of bats, soar over an active volcano, dive through shipwrecks, and experience the Milky Way in 360° video and ambisonic audio.",
+            "agency": "Stink Studios",
+            "dev": "React, ThreeJS, 360 videos, 4 custom modules",
+            "link":{
+                "label": "Visit Website ¬",
+                "url": "https://artsandculture.withgoogle.com/en-us/national-parks-service"
+            }
         },
         {
             "id": "03",
@@ -152,7 +141,7 @@
             "dev": "PixiJS",
             "link":{
                 "label": "Case study ¬",
-                "url": "https://www.behance.net/gallery/41645265/Twitter-Marketing-Platform"
+                "url": "http://spotifyftf.timroussilhe.com/"
             }
         },
         {

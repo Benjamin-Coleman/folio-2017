@@ -3,9 +3,10 @@
 import React, { Component } from 'react';
 import styles from './IntroMotion.module.css';
 import { TweenMax } from 'gsap';
-import Typist from 'react-typist';
+// import Typist from 'react-typist';
 import GlobalStore from '../../base/globalStore';
 import {Lethargy} from 'lethargy';
+import MorphSVGPlugin from './../Intro/MorphSVGPlugin';
 
 class Intro extends Component {
 
@@ -48,11 +49,14 @@ class Intro extends Component {
         this.title.innerHTML = spannedTitleText;
 
         this.setupDom();
-        this.initTL();
-
-
-        this.tlIntro.play(0);
-
+        // SVG morph
+        MorphSVGPlugin.convertToPath(this.refs.el.querySelectorAll('.shape_face'));
+        MorphSVGPlugin.convertToPath(this.refs.el.querySelectorAll('.letter_svg'));
+        setTimeout(() => {
+            this.initTL();
+            this.tlIntro.play(0);
+        }, 0);
+        
         // this.onIntroHidden();
 
     }
@@ -114,24 +118,6 @@ class Intro extends Component {
 
         let letters = this.refs.mainTitle.childNodes;
 
-        function shuffle(array) {
-            var currentIndex = array.length, temporaryValue, randomIndex;
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
-
-                // Pick a remaining element...
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex -= 1;
-
-                // And swap it with the current element.
-                temporaryValue = array[currentIndex];
-                array[currentIndex] = array[randomIndex];
-                array[randomIndex] = temporaryValue;
-            }
-
-            return array;
-        }
-
         /**
          * Randomize array element order in-place.
          * Using Durstenfeld shuffle algorithm.
@@ -162,50 +148,71 @@ class Intro extends Component {
 
         const initialDelay = 2;
 
-		this.tlIntro
-			.to(this.refs.circle, 1,
-				{strokeDashoffset: 0 , ease: Expo.easeOut}, initialDelay )
-            .to(this.refs.type, 3,
-				{rotation: 40, transformOrigin: '50% 51%', force3D:true}, initialDelay + 1)
+        let t = this.refs.el.querySelectorAll('.t');
+        let i = this.refs.el.querySelectorAll('.i');
+        let m = this.refs.el.querySelectorAll('.m');
 
+		this.tlIntro
+
+            .fromTo(t, 1,
+				{y: 100, skewY: 50, autoAlpha: 0},
+				{y: 0, skewY: 0, autoAlpha: 1, ease: Power2.easeOut}, initialDelay)
+            .fromTo(i, 1,
+				{y: -100, skewY: 50, autoAlpha: 0},
+				{y: 0, skewY: 0, autoAlpha: 1, ease: Power2.easeOut}, initialDelay)
+            .fromTo(m, 1,
+				{y: 100, skewY: 50, autoAlpha: 0},
+				{y: 0, skewY: 0, autoAlpha: 1, ease: Power2.easeOut}, initialDelay)
+            
+			.to(this.refs.circle, 1,
+				{strokeDashoffset: 0 , ease: Power2.easeInOut}, initialDelay + 0.75 )
+
+
+            //FACE
+            .to(this.refs.el.querySelector('.t'), .5, { morphSVG: this.refs.el.querySelector('.eye01'), ease: Power2.easeOut }, initialDelay + 1.5)
+            .to(this.refs.el.querySelector('.m'), .3, { morphSVG: this.refs.el.querySelector('.eye02'), ease: Power2.easeOut }, initialDelay + 1.5)
+            .to(this.refs.el.querySelector('.i'), .5, { morphSVG: this.refs.el.querySelector('.mouth'), ease: Power2.easeOut }, initialDelay + 1.5)
+            .to(this.refs.el.querySelector('.i'), .5, { morphSVG: this.refs.el.querySelector('.smile_up'), ease: Power2.easeOut }, initialDelay + 2.5)
+
+            .to(this.refs.circle, .1,
+				{opacity: 0}, initialDelay + 2.9)
 
             .fromTo(this.refs.circleText, .1,
 				{opacity: 0},
 				{opacity: 1, ease: Expo.easeOut}, initialDelay + 3)
 
-            .to(this.refs.circle, .1,
-				{opacity: 0}, initialDelay + 3)
-            .to(this.refs.type, .1,
-				{opacity: 0}, initialDelay + 3)
+            
+            // .to(this.refs.type, .1,
+			// 	{opacity: 0}, initialDelay + 3)
 
             .to(this.refs.circleText, .1,
 				{opacity: 0, ease: Expo.easeOut}, initialDelay + 3.15)
             .to(this.refs.circleText, .1,
 				{opacity: 1, ease: Expo.easeOut}, initialDelay + 3.3)
 
-            .to(this.refs.circleText, 3,
-				{rotation: -40, transformOrigin: '80px 80px', force3D:true}, initialDelay + 3)
+            .to(this.refs.circleText, 2,
+				{rotation: -40, transformOrigin: '70px 70px', force3D:true}, initialDelay + 3)
 
-            .to(this.refs.circleText, .1,
-				{opacity: 0}, initialDelay + 6)
+            // .to(this.refs.circleText, .1,
+			// 	{opacity: 0}, initialDelay + 6)
 
-            //FACE
-            .fromTo(faceElements, .2,
-                {opacity: 0},
-                {opacity: 1, ease: Expo.easeOut}, initialDelay + 6.1)
+            // //FACE
+            // .fromTo(faceElements, .2,
+            //     {opacity: 0},
+            //     {opacity: 1, ease: Expo.easeOut}, initialDelay + 6.1)
 
-            .to(this.refs.circleText, .1,
-				{opacity: 1}, initialDelay + 6.5)
+            // .to(this.refs.circleText, .1,
+			// 	{opacity: 1}, initialDelay + 6.5)
 
-            .fromTo(randomLettersThirdOne, .5,
+            .fromTo(randomLettersThirdOne, .8,
 				{y: 100, skewY: 50, opacity: 0},
 				{y: 0, skewY: 0, opacity: 1, ease: Power2.easeOut}, initialDelay + 4)
-            .fromTo(randomLettersThirdTwo, .5,
+            .fromTo(randomLettersThirdTwo, .8,
 				{y: -100, skewY: -50, opacity: 0},
-				{y: 0, skewY: 0, opacity: 1, ease: Power2.easeOut}, initialDelay + 4.5)
-            .fromTo(randomLettersThirdThree, .5,
+				{y: 0, skewY: 0, opacity: 1, ease: Power2.easeOut}, initialDelay + 4.1)
+            .fromTo(randomLettersThirdThree, .8,
 				{y: 100, skewY: 50, opacity: 0},
-				{y: 0, skewY: 0, opacity: 1, ease: Power2.easeOut}, initialDelay + 5)
+				{y: 0, skewY: 0, opacity: 1, ease: Power2.easeOut}, initialDelay + 4.2)
 
     }
 
@@ -214,7 +221,7 @@ class Intro extends Component {
         this.unBindLethargyEvents();
         this.setState({ introShown: true });
 
-        TweenLite.to(this.refs.el, 1, { ease: Power2.easeOut, clip:"rect(0px "+ GlobalStore.get('viewport').width +" 0px 0px)"
+        TweenLite.to(this.refs.el, 1, { ease: Power2.easeOut, clip:"rect(" + GlobalStore.get('viewport').height + " "+ GlobalStore.get('viewport').width +" " + GlobalStore.get('viewport').height + " 0px)"
             , onComplete: () => {
                 // put scroll back on
                 document.body.style.position = "static";
@@ -283,9 +290,9 @@ class Intro extends Component {
     render() {
 
         const backgroundSvg = styles.background_svg + " background_s";
-        const letterSvgT = styles.letter_svg + " letter t ";
-        const letterSvgI = styles.letter_svg + " letter i ";
-        const letterSvgM = styles.letter_svg + " letter m ";
+        const letterSvgT = styles.letter_svg + " letter_svg t ";
+        const letterSvgI = styles.letter_svg + " letter_svg i ";
+        const letterSvgM = styles.letter_svg + " letter_svg m ";
         const letterSvgEye1 = styles.eyes_svg + " eyes eye01 shape_face";
         const letterSvgEye2 = styles.eyes_svg + " eyes eye02 shape_face";
         const letterSvgMouth = styles.mouth_svg + " mouth shape_face";
@@ -303,23 +310,36 @@ class Intro extends Component {
 
                 <div className={ styles.circle_wrapper } ref="circle_wrapper">
 
-                    <span ref="type" className={ styles.type_wrapper }>
+                    {/*<span ref="type" className={ styles.type_wrapper }>
                         <Typist  startDelay={2000} avgTypingDelay={30}>
                             Dear Visitors,
                         </Typist>
-                    </span>
+                    </span>*/}
 
                     <h2 className={styles.circleText} ref="circleText" >Oh my!  Portfolio 2017  </h2>
 
-                    <svg ref="mainSvg" className={ styles.logo_svg }version="1.1" id="logo"x="0px"y="0px" viewBox="0 0 150 150" >
+                    {/*<svg ref="mainSvg" className={ styles.logo_svg }version="1.1" id="logo"x="0px"y="0px" viewBox="0 0 150 150" >
                         <circle ref="circle" className={ backgroundSvg } cx="75" cy="75" r="70" / >
-                        <polygon className={ letterSvgT } points="34.3,37 40.9,37 40.9,38.4 38.4,38.4 38.4,45.5 36.8,45.5 36.8,38.4 34.3,38.4 " />
-                        <rect x="52.4" y="68" className={ letterSvgI } width="1.6"  height="8.5" / >
-                        <polygon className={ letterSvgM } points="71.2,45.5 73.2,45.5 75.5,51.5 77.7,45.5 79.7,45.5 79.7,54 78.2,54 78.2,47.9 76,53.9 74.8,53.9
+                        <polygon ref="t" className={ letterSvgT } points="34.3,37 40.9,37 40.9,38.4 38.4,38.4 38.4,45.5 36.8,45.5 36.8,38.4 34.3,38.4 " />
+                        <rect ref="i" x="52.4" y="68" className={ letterSvgI } width="1.6"  height="8.5" / >
+                        <polygon ref="m" className={ letterSvgM } points="71.2,45.5 73.2,45.5 75.5,51.5 77.7,45.5 79.7,45.5 79.7,54 78.2,54 78.2,47.9 76,53.9 74.8,53.9
 72.7, 47.9 72.7, 54 71.2, 54 "/>
                         <circle className={ letterSvgEye1 } cx="52.7" cy="66.5" r="5.7" / >
                         <circle className={ letterSvgEye2 } cx="99.5" cy="66.5" r="5.7" / >
                         <rect x="61.8" y="90.6" className={ letterSvgMouth } width="28.7" height="9" / >
+                        <path className={ letterSvgMouthUp } d="M50.4,82.8c-9.8,0-17.7-8-17.7-17.7h9c0,4.8,3.9,8.7,8.7,8.7s8.7-3.9,8.7-8.7h9C68.1,74.9,60.2,82.8,50.4,82.8z" />
+                        <path className={ letterSvgMouthDown } d="M50.4,74c9.8,0,17.7,8,17.7,17.7h-9c0-4.8-3.9-8.7-8.7-8.7s-8.7,3.9-8.7,8.7h-9C32.7,81.9,40.6,74,50.4,74z" />
+                    </svg>*/}
+
+                    <svg ref="mainSvg" className={ styles.logo_svg }version="1.1" id="logo_motion"x="0px"y="0px" viewBox="0 0 102 102" >
+                        <circle ref="circle" className={ backgroundSvg } cx="51" cy="51" r="48.5" / >
+                        <polygon ref="t" className={ letterSvgT } points="34.3,37 40.9,37 40.9,38.4 38.4,38.4 38.4,45.5 36.8,45.5 36.8,38.4 34.3,38.4 " />
+                        <rect ref="i" x="52.4" y="68" className={ letterSvgI } width="1.6"  height="8.5" / >
+                        <polygon ref="m" className={ letterSvgM } points="71.2,45.5 73.2,45.5 75.5,51.5 77.7,45.5 79.7,45.5 79.7,54 78.2,54 78.2,47.9 76,53.9 74.8,53.9
+72.7, 47.9 72.7, 54 71.2, 54 "/>
+                        <circle className={ letterSvgEye1 } cx="27.7" cy="46.5" r="5.7" / >
+                        <circle className={ letterSvgEye2 } cx="74.5" cy="46.5" r="5.7" / >
+                        <rect x="36.8" y="70.6" className={ letterSvgMouth } width="28.7" height="9" / >
                         <path className={ letterSvgMouthUp } d="M50.4,82.8c-9.8,0-17.7-8-17.7-17.7h9c0,4.8,3.9,8.7,8.7,8.7s8.7-3.9,8.7-8.7h9C68.1,74.9,60.2,82.8,50.4,82.8z" />
                         <path className={ letterSvgMouthDown } d="M50.4,74c9.8,0,17.7,8,17.7,17.7h-9c0-4.8-3.9-8.7-8.7-8.7s-8.7,3.9-8.7,8.7h-9C32.7,81.9,40.6,74,50.4,74z" />
                     </svg>

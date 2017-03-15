@@ -1,7 +1,9 @@
 .featured_projects {
 
 	background-color: black;
-	min-height: 140vh;
+	min-height: 100vh;
+    margin-top: 100vh !important;
+    overflow: hidden;
 
     header {
 

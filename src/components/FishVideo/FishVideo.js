@@ -50,8 +50,11 @@ class FishVideo extends Component {
 	componentDidMount(){
 
         this.setupScene();
-        this.resize();
-        this.setTimeLines();
+        setTimeout(() => {
+			this.resize();
+            this.setTimeLines();
+		}, 0);
+        
 
         // this.smooth = new Smooth({ smoothContainer: false });
 		// // this.smoothElements = [];
@@ -254,62 +257,90 @@ class FishVideo extends Component {
 		var thanks03 = this.refs.thanks03;
 
 		var luck = this.refs.luck;
+		var lucky = this.refs.lucky;
+		var day = this.refs.day;
         var canvasContainer = this.refs.canvasContainer;
 
-		const delayBallon = 1.7;
-		const durationLetters = 6;
-		const delayLetters = 4.5;
+		// const delayBallon = 1.7;
+		// const durationLetters = 6;
+		// const delayLetters = 4.5;
 
         const halfHeight = this.windowHeight / 2;
 
 		timeline
 
-		.from(thanks01, 1, {
+		.from(thanks01, .8, {
 			y: halfHeight,
+            skewY:30,
             opacity:0,
 			ease: Power4.easeOut
-		}, 0)
+		}, .5)
 
-		.from(thanks02, 1, {
+		.from(thanks02, .8, {
 			y: halfHeight,
+            skewY:30,
             opacity:0,
 			ease: Power4.easeOut
-		}, .1)
+		}, .6)
 
-        .from(thanks03, 1, {
+        .from(thanks03, .8, {
 			y: halfHeight,
+            skewY:30,
             opacity:0,
 			ease: Power4.easeOut
-		}, .2)
+		}, .7)
 
-        .from(luck, 1, {
+        .from(luck, .6, {
 			x: 300,
             opacity:0,
-			ease: Power4.easeOut
+			ease: Power1.easeInOut
+		}, .9)
+
+        .set(lucky, {
+			opacity: 0,
+            y: 40,
+			ease: Power1.easeInOut
+		}, 0)
+
+        .to(lucky, .5,{
+			opacity: 1,
+            y: 0,
+			ease: Power1.easeInOut
+		}, 1.5)
+
+        .set(day, {
+			x: -137,
+			ease: Power1.easeInOut
+		}, 0)
+
+        .to(day, .75,{
+			x: 0,
+			ease: Power2.easeInOut
 		}, 1)
 
-        .to(thanks01, 1, {
+        .to(thanks01, .5, {
 			opacity: 0.05,
 			ease: Power1.easeInOut
-		}, 1)
+		}, 1.75)
 
-		.to(thanks02, 1, {
+		.to(thanks02, .5, {
 			opacity: 0.05,
 			ease: Power1.easeInOut
-		}, 1)
+		}, 1.75)
 
-        .to(thanks03, 1, {
+        .to(thanks03, .5, {
 			opacity: 0.05,
 			ease: Power1.easeInOut
-		}, 1)
+		}, 1.75)
 
-        .from(canvasContainer, 1, {
+        .from(canvasContainer, .5, {
 			opacity: 0,
 			ease: Power1.easeInOut
-		}, 1)
-        .to(this.distortFilter,2,{
+		}, 2)
+
+        .to(this.distortFilter, 1,{
             amplitude: 9.0,
-			ease: Power3.easeInOut
+			ease: Power2.easeOut
         })
 
 		this.mainTL.add(timeline, 0);
@@ -462,11 +493,15 @@ class FishVideo extends Component {
 		const before = scrollY < this.top;
 		// const after = scrollY > this.bottom;
 
-        if(scrollY <= this.bottom && scrollY >= this.top) {
+        if(scrollY <= this.bottom && scrollY >= this.top - GlobalStore.get('viewport').height) {
 
 			if (scrollY !== this.scrollY) {
 
-				this.scroll = (scrollY - this.top) / this.height;
+				this.scroll = (scrollY + GlobalStore.get('viewport').height - this.top) / this.height;
+                console.log('scrollY', scrollY);
+                console.log('this.height', this.height);
+                console.log('this.top', this.top);
+                
                 console.log('this.scroll', this.scroll);
 
 				this.scrollTween = new TweenLite(this, 1, {
@@ -580,11 +615,11 @@ class FishVideo extends Component {
 
         this.documentHeight = this.refs.el.offsetHeight;
 
-        this.top = getPositionStart(this.refs.el, GlobalStore.get('viewport').height) + GlobalStore.get('viewport').height;;
+        this.top = getPositionStart(this.refs.el, GlobalStore.get('viewport').height) + GlobalStore.get('viewport').height;
         this.bottom = getPositionEnd(this.refs.el, GlobalStore.get('viewport').height);
 
         // it's more the distance to scroll
-		this.height = this.documentHeight - GlobalStore.get('viewport').height;
+		this.height = this.documentHeight;
 
         console.log('this.top', this.top);
         console.log('this.height', this.height);
@@ -609,7 +644,7 @@ class FishVideo extends Component {
                         <h3 ref="thanks03" className={styles.thanks}>your time!</h3>
                     </div>
                     <div className={styles.luck_wrapper}>
-                        <h4 ref="luck" className={styles.luck}>I wish you a pleasant and lucky day.</h4>
+                        <h4 ref="luck" className={styles.luck}>I wish you a pleasant <span className={styles.luck_span} ref="lucky">and lucky</span> <span className={styles.luck_span} ref="day">day.</span></h4>
                     </div>
                     <div ref="canvasContainer" className={styles.canvasContainer}></div>
                 </div>
