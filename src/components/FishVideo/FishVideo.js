@@ -635,7 +635,7 @@ class FishVideo extends Component {
             <div ref="el" className={styles.section}>
                 <div ref="wrapper" className={styles.thanks_wrapper}>
                     <div className={styles.thank_wrapper01}>
-                        <h3 ref="thanks01" className={styles.thanks +' '+ styles.thanks01}>Thanks you</h3>
+                        <h3 ref="thanks01" className={styles.thanks +' '+ styles.thanks01}>Thank you</h3>
                     </div>
                     <div className={styles.thank_wrapper02}>
                         <h3 ref="thanks02" className={styles.thanks}>for</h3>

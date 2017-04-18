@@ -95,12 +95,12 @@ class About extends Component {
 					</div>
 					<ul className={styles.links__list}>
 						<li>
-							<a className={styles.link} href="#">→  Email</a>
-							<a className={styles.link} href="#">→  Github</a>
-							<a className={styles.link} href="#">→  Twitter</a>
-							<a className={styles.link} href="#">→  Dribbble</a>
-							<a className={styles.link} href="#">→  Behance</a>
-							<a className={styles.link} href="#">→  Instagram</a>
+							<a className={styles.link} href="mailto:timotheeroussilhe@gmail.com" target="_blank">→  Email</a>
+							<a className={styles.link} href="https://github.com/TimRoussilhe" target="_blank">→  Github</a>
+							<a className={styles.link} href="https://twitter.com/TimRoussilhe" target="_blank">→  Twitter</a>
+							<a className={styles.link} href="https://dribbble.com/TimRoussilhe" target="_blank">→  Dribbble</a>
+							<a className={styles.link} href="https://www.behance.net/timroussilhe" target="_blank">→  Behance</a>
+							<a className={styles.link} href="https://www.instagram.com/timroussilhe" target="_blank">→  Instagram</a>
 						</li>
 					</ul>
 

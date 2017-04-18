@@ -8,6 +8,7 @@ import {TimelineMax} from 'gsap';
 import ReactPlayer from 'react-player'
 import GlobalStore from '../../base/globalStore';
 import {getPositionStart, getPositionEnd} from '../../helpers/offset.js';
+import enableInlineVideo from 'iphone-inline-video';
 
 class WorkItem extends Component {
 
@@ -108,6 +109,12 @@ class WorkItem extends Component {
 
     //here only Timeline stuu because we trigger this on resize.
     setupDom(){
+
+        // inline mobile video for mobile
+        if(GlobalStore.config.isMobile){
+            var video = this.refs.workItem.querySelector('video');
+            enableInlineVideo(video);
+        }
 
         // this.resize();
         const halfHeight = this.item.offsetHeight / 2;
@@ -321,20 +328,19 @@ class WorkItem extends Component {
 
     playVideo(){
 
-        const elVideo = this.player.player.player;
-        if (elVideo) {
-			this.setState({hover: true});
+        if (this.player.player) {
+			// this.setState({hover: true});
 			if (!this.state.videoCanPlay) {
 				// elVideo.addEventListener('canplay', () => {
 				// 	this.onVideoCanPlay();
 				// });
 				// elVideo.load();
                 this.setState({playing: true});
-			} else {
-				elVideo.play();
 			}
 
-		}
+		}  else {
+            this.elPLayer.play();
+        }
 
     }
 
@@ -348,9 +354,13 @@ class WorkItem extends Component {
     }
     pauseVideo(){
 
-        console.log('pauseVideo');
-        this.setState({playing: false});
-
+        if (this.player.player) {
+			// this.setState({hover: true});
+			this.setState({playing: false});
+		}  else {
+            this.elPLayer.pause();
+        }
+        
     }
 
     onProgress(e) {
@@ -440,6 +450,27 @@ class WorkItem extends Component {
 
         isMobile && (className += " grid__col--bleed");
 
+        let videoPlayer;
+        if (isMobile) {
+            videoPlayer = (
+               <video className='video-player' ref={(player => { this.player = player })} playsInline src={data.videoSourceMP4}></video>
+            )
+        } else {
+            videoPlayer = (
+                <ReactPlayer
+                    ref={(player => { this.player = player })}
+                    className='video-player'
+                    url={data.videoSourceMP4}
+                    playing={playing}
+                    preload={preload}
+                    loop={true}
+                    muted={true}
+                    onProgress={(e) => this.onProgress(e)}
+                />
+            )
+        }
+
+
 		return (
             <div ref="workItem" className={className} style={style}>
 
@@ -455,16 +486,7 @@ class WorkItem extends Component {
                                 <ProgressBar parentWidth={this.workAssetwidth} parentHeight={this.workAssetHeight} playing={playing} progress={progressPercent}/>
                             }
 
-                            <ReactPlayer
-                                ref={(player => { this.player = player })}
-                                className='video-player'
-                                url={data.videoSourceMP4}
-                                playing={playing}
-                                preload={preload}
-                                loop={true}
-                                muted={true}
-                                onProgress={(e) => this.onProgress(e)}
-                            />
+                            {videoPlayer}
                             {/*<div className="title-wrapper"><h3>{data.symbol}</h3></div>*/}
                             <div className="work-title"><h2>{data.symbol}</h2></div>
                             <div className="work-background"></div>
@@ -504,7 +526,7 @@ class WorkItem extends Component {
                         </div>
                         <div className="link-wrapper">
                             <ul>
-                                <li><a href="#" onClick={(e) => this.disPlayInfo(e)}>Infos ¬</a></li>
+                                <li><a href="#" onClick={(e) => this.disPlayInfo(e)}>More Info ¬</a></li>
                                 {data.link &&
                                     <li><a href={data.link.url} target="_blank">{data.link.label}</a></li>
                                 }

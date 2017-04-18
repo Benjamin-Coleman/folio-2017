@@ -1,8 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group' // ES6
-// import TransitionGroup from 'react-addons-transition-group';
-// import {Motion, spring, TransitionMotion} from 'react-motion';
-// import TransitionGroup from 'react-addons-transition-group';
 import {TweenMax} from 'gsap';
 
 import './LazyImage.css';

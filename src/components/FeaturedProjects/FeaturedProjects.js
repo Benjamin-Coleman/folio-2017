@@ -66,25 +66,27 @@ class FeaturedProjects extends Component {
 		this.mainTL = new TimelineLite();
 		this.mainTL.stop();
 
-		var timeline = new TimelineLite();
+		const timeline = new TimelineLite();
 
-		var title01 = this.refs.title01;
-		var title02 = this.refs.title02;
+		const title01 = this.refs.title01;
+		const title02 = this.refs.title02;
 
-		var image01 = this.refs.image01;
-		var image02 = this.refs.image02;
-		var image03 = this.refs.image03;
-		var image04 = this.refs.image04;
+		const image01 = this.refs.image01;
+		const image02 = this.refs.image02;
+		const image03 = this.refs.image03;
+		const image04 = this.refs.image04;
 
-		var line00 = this.refs.line00;
-		var line01 = this.refs.line01;
-		var line02 = this.refs.line02;
-		var line03 = this.refs.line03;
-		var line04 = this.refs.line04;
-		var line05 = this.refs.line05;
+		const line00 = this.refs.line00;
+		const line01 = this.refs.line01;
+		const line02 = this.refs.line02;
+		const line03 = this.refs.line03;
+		const line04 = this.refs.line04;
+		const line05 = this.refs.line05;
+
+		const wrapper = this.refs.wrapper;
 
 		const delayBallon = 1.7;
-		const durationLetters = 6;
+		const durationLetters = 5;
 		const delayLetters = 4.5;
 
 		timeline
@@ -104,26 +106,35 @@ class FeaturedProjects extends Component {
 			ease: Power2.easeOut
 		}, delayLetters)
 		.from(line01, durationLetters, {
-			y: 150,
+			y: 125,
 			ease: Power2.easeOut
 		}, delayLetters)
 		.from(line02, durationLetters, {
-			y: 250,
+			y: 200,
 			ease: Power2.easeOut
 		}, delayLetters)
 		.from(line03, durationLetters, {
-			y: 350,
+			y: 275,
 			ease: Power2.easeOut
 		}, delayLetters)
 		.from(line04, durationLetters, {
-			y: 450,
+			y: 325,
 			ease: Power2.easeOut
 		}, delayLetters)
 		.from(line05, durationLetters, {
-			y: 550,
+			y: 400,
 			ease: Power2.easeOut
 		}, delayLetters)
+		
 
+		.fromTo(wrapper, 9, {
+			y: -400,
+			ease: Power2.easeOut
+		},{
+			y: 100,
+			ease: Power2.easeOut
+		}
+		, 2)
 		.to(image01, delayBallon, {
 			clip: "rect(0px 375px 397px 0px)",
 			ease: Power4.easeOut
@@ -210,7 +221,6 @@ class FeaturedProjects extends Component {
 		this.documentHeight = this.refs.el.offsetHeight;
 
         this.top = getPositionStart(this.refs.el, GlobalStore.get('viewport').height) + GlobalStore.get('viewport').height;
-        console.log('BOTTOM ---------------');
 		this.bottom = getPositionEnd(this.refs.el, GlobalStore.get('viewport').height) - GlobalStore.get('viewport').height;		
 
 		// it's more the distance to scroll
