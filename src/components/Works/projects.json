@@ -22,6 +22,25 @@
         },
         {
             "id": "01",
+            "symbol": "Google Pride",
+            "brand": "Google",
+            "role": "Creative Developer",
+            "name": "Google Pride",
+            "videoSourceMP4": "/assets/videos/pride.mp4",
+            "season": "SS 017",
+            "offsetLeft": 2,
+            "offsetRight": 0,
+            "col": 8,
+            "description":"I had the chance to Stink Studios & Google to design a platform to celebrate and promote Pride from all over the World. Because we all have a reason to #ShowUp..",
+            "agency": "Stink Studios",
+            "dev": "ES6, Redux, Interactive",
+            "link":{
+                "label": "Visit Website ¬",
+                "url": "https://pride.google/en-US"
+            }
+        },
+        {
+            "id": "02",
             "symbol": "Magic Minute Project",
             "brand": "Android Wear",
             "role": "Lead Developer & Motion",
@@ -40,7 +59,7 @@
             }
         },
         {
-            "id": "02",
+            "id": "03",
             "symbol": "The Hidden Worlds of the National Parks",
             "brand": "Google",
             "role": "Creative Developer",
@@ -59,7 +78,7 @@
             }
         },
         {
-            "id": "03",
+            "id": "04",
             "symbol": "Inside Discovery",
             "brand": "PITCHFORK & SPOTIFY",
             "role": "Creative Developer & UX Designer",
@@ -82,7 +101,7 @@
             "id": "container03",
             "children":[
                {
-                    "id": "04",
+                    "id": "05",
                     "symbol": "Twitter MTC",
                     "videoSourceMP4": "/assets/videos/mtc.mp4",
                     "season": "AW 016",
@@ -109,7 +128,7 @@
             ]
         },
         {
-            "id": "05",
+            "id": "06",
             "symbol": "Stink Studios",
             "brand": "New Portfolio",
             "videoSourceMP4": "/assets/videos/sd.mp4",
@@ -127,7 +146,7 @@
             }
         },
         {
-            "id": "06",
+            "id": "07",
             "brand": "Spotify",
             "symbol": "Found them first",
             "videoSourceMP4": "/assets/videos/ftf.mp4",
@@ -145,7 +164,7 @@
             }
         },
         {
-            "id": "07",
+            "id": "08",
             "symbol": "Il etait une foret",
             "brand": "Luc Jacquet",
             "name": "Il etait une foret",
@@ -175,7 +194,7 @@
                     "col": 3
                 },
                {
-                    "id": "08",
+                    "id": "09",
                     "symbol": "WWF 40 Years Anniversary",
                     "brand": "WWF",
                     "name": "40 Years",
@@ -194,7 +213,7 @@
             ]
         },
 		{
-            "id": "09",
+            "id": "10",
             "symbol": "What are you made of?",
             "brand": "Far Cry 4",
 			"videoSourceMP4": "/assets/videos/farcry.mp4",
